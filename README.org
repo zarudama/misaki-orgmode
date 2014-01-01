@@ -1,5 +1,5 @@
 
-[[https://raw.github.com/liquidz/misaki-markdown/master/sample/public/img/misaki-orgmode-logo.png][misaki orgmode logo]]
+[[https://raw.github.com/mikio/misaki-orgmode/master/sample/public/img/misaki-orgmode-logo.png][misaki orgmode logo]]
 
 misaki-orgmode is one of [[https://github.com/liquidz/misaki][Misaki]]'s compiler plugin.
 This compiler allows you to use [[http://orgmode.org][Org mode]] and [[https://github.com/liquidz/cuma][cuma templates]] instead of S-exp templates.
