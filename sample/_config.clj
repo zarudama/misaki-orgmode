@@ -21,7 +21,7 @@
         :atom       "atom.xml"
         :atom-base  "http://localhost:8080"
         :twitter-id "mikio_kun"
-        :disqus-id  "mikiokunblog"
+        :disqus-id  "foofoomikiokunblog"
         :recent-posts-num 2
         :local {:css ["css/main.css"]
                 :js  ["js/highlight.pack.js"
