@@ -1,0 +1,40 @@
+
+[[https://raw.github.com/liquidz/misaki-markdown/master/sample/public/img/misaki-orgmode-logo.png][misaki orgmode logo]]
+
+misaki-orgmode is one of [[https://github.com/liquidz/misaki][Misaki]]'s compiler plugin.
+This compiler allows you to use [[http://orgmode.org][Org mode]] and [[https://github.com/liquidz/cuma][cuma templates]] instead of S-exp templates.
+
+** Demo & Doucment site
+- http://mikio.github.io/misaki-orgmode/
+
+** Usage
+*** Run sample
+#+BEGIN_SRC sh
+$ git clone git@github.com:mikio/misaki-orgmode.git
+$ cd misaki-orgmode
+$ lein run sample
+#+END_SRC
+
+** Example template
+#+BEGIN_EXAMPLE
+;;;;;;;;;;;
+#+END_EXAMPLE
+
+** Configuration
+#+BEGIN_EXAMPLE
+;;;;;;;;;;;
+#+END_EXAMPLE
+
+** TODOLIST
+- Documents
+- htmlize.elの組込み
+- emacs server
+- windows path
+- cuma comment
+- cuma escape
+
+** License
+
+Copyright (C) 2013 mikio_kun([[http://twitter.com/mikio_kun/][@mikio_kun]])
+
+Distributed under the Eclipse Public License, the same as Clojure.

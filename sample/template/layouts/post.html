@@ -1,0 +1,45 @@
+; @layout   layout
+; @orgmode? false
+
+<div class="page-header">
+  <h1><a href="$(url)">$(title)</a></h1>
+  <p class="date">$(date)</p>
+</div>
+
+<div id="page">
+  $(raw content)
+</div>
+
+<div class="tag">
+  <h2>tags</h2>
+  <ul>
+    @(for tags)
+    <li><span><a href="$(url)">$(name)</a></span></li>
+    @(end)
+  </ul>
+</div>
+
+<div class="pager">
+  @(if prev)
+  <a href="$(url)">&laquo; $(title)</a>
+  @(end)
+  &nbsp;&nbsp;
+  @(if next)
+  <a href="$(url)">&raquo; $(title)</a>
+  @(end)
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+ /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+ var disqus_shortname = '$(disqus-id)';
+
+ /* * * DON'T EDIT BELOW THIS LINE * * */
+ (function() {
+   var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+   dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+   (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+ })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
