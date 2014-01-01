@@ -9,5 +9,10 @@ pom.xml
 .lein-failures
 .lein-plugins
 .lein-repl-history
-sample/public
 watcher.rb
+/sample/public/20*
+/sample/public/page[0-9]*
+/sample/public/tag
+/sample/public/atom.xml
+/sample/public/index.html
+/sample/public/archives.html

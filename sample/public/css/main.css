@@ -1,0 +1,179 @@
+/* =basic */
+body, h1, h2, h3, h4, p { margin: 0; padding: 0; }
+body, p { font-family: 'Josefin Sans', sans-serif; }
+
+a { color: #4ea5e1; }
+a:hover { opacity: 0.5; }
+
+blockquote { color: #888; font-style: italic; }
+blockquote p:before { content: '> '; }
+
+.right { float: right; }
+
+/* =header */
+.site-header h1 a {
+    display: block;
+    font-size: 0;
+    text-indent:200%;
+    background: transparent url(../img/misaki-orgmode-logo.png) no-repeat top left;
+    width: 404;
+    height: 70px;
+}
+
+h1 + p {
+    margin-top: 1em;
+    color: #666;
+    font-size: 20px;
+}
+
+h2 a { color: #000; text-decoration: none; }
+
+/* =footer */
+footer p { text-align: right; }
+footer {
+    border-top: 1px solid;
+    border-color: rgba(0,39,59,.08);
+    margin: 24px 0 10px;
+}
+
+#bottom {
+    border-top: 1px solid;
+    border-color: rgba(0,39,59,.08);
+}
+
+/* column style */
+.column { overflow: hidden; }
+.column > div { float: left; }
+.column .w50per { width: 49%; }
+
+h2 { margin: 1em 0 0.5em; color: #444; font-weight: normal; font-size: 30px; }
+h2:first-letter { color: #93ca76; font-weight: bold; }
+
+/* =container */
+.container { width: 940px; margin: 1em auto; }
+
+
+/* =footer(last paragraph) */
+hr { border: 1px solid #fff; }
+
+hr + p {
+    margin-top: 1em;
+    text-align: right;
+}
+
+/* page header style */
+.page-header { margin: 1.5em 0 0.5em 0; border-bottom: 1px solid #eaeaea; overflow: hidden; }
+.page-header h1 { color: #444; font-weight: normal; float: left; }
+.page-header h1 span { color: #93ca76; font-weight: bold; }
+.page-header p.date { float: right; margin: 20px 10px 0 30px; font-weight: bold; letter-spacing: 1px; color: #444; }
+.page-header h1 a {
+    text-decoration: none;
+    color: #444;
+}
+
+/* tag style */
+.tag ul { margin: 10px 0 0 30px; padding: 0; list-style: none; float: left; }
+.tag ul li { display: inline; margin-right: 10px; }
+.tag ul li a {
+    padding: 0.2em 0.5em;
+    border: 2px solid #fef263;
+    border-radius: 5px;
+    color: #444;
+    text-decoration: none;
+}
+.tag ul li a:hover { opacity: 0.5; }
+
+.pager {
+    float: none;
+    box-shadow: 0 0 5px #fde3e3;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #eebbcb;
+    background: #fbeff3;
+}
+/* org-mode */
+code, pre {
+    padding: 0 3px 2px;
+    font-family: "Ubuntu Mono", Menlo, Monaco, Consolas, "Courier New";
+    font-size: 16px;
+    color: #333333;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+code {
+    padding: 2px 4px;
+    color: #d14;
+    background-color: #f7f7f9;
+    border: 1px solid #e1e1e8;
+}
+pre {
+    display: block;
+    padding: 11.961538461538462px;
+    margin: 0 0 12.461538461538462px;
+    font-size: 17px;
+    line-height: 24.923076923076923px;
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: pre;
+    white-space: pre-wrap;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+pre.prettyprint {
+    margin-bottom: 24.923076923076923px;
+}
+pre code {
+    padding: 0;
+    color: inherit;
+    background-color: transparent;
+    border: 0;
+}
+.pre-scrollable {
+    max-height: 340px;
+    overflow-y: scroll;
+}
+
+#page pre.src,
+#page pre.example,
+#page .modal-body > pre {
+    resize: both;
+    overflow: auto;
+    -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+    border: 1px solid #eeeeee;
+    background: #2e3436;
+    color: #eeeeec;
+}
+#page pre.src span.linenr,
+#page pre.example span.linenr,
+#page .modal-body > pre span.linenr {
+    font-style: italic;
+    font-weight: bold;
+}
+#page pre.src span.code-highlighted,
+#page pre.example span.code-highlighted,
+#page .modal-body > pre span.code-highlighted {
+    background: darkolivegreen;
+}
+
+.figure {
+    text-align: left;
+    margin-top: 1em;
+    margin-bottom: 3em;
+}
+.figure img {
+    border-width: 0px;
+    box-shadow: 2px 2px 10px #000;
+}
+#table-of-contents li {
+    padding: 0;
+    margin: 1px;
+    list-style: none;
+}
