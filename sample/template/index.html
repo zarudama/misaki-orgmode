@@ -8,47 +8,28 @@
   This compiler allows you to use <a href="http://orgmode.org">Org mode</a> and <a href="https://github.com/liquidz/cuma">cuma templates</a> instead of S-exp templates.
 </p>
 
-<h2>Sample posts</h2>
+<h2>Table of contents</h2>
 <ul>
-  @(for posts)
-  <li><a href="$(url)">$(date-format date "yyyy MM dd") - $(title)</a></li>
-  @(end)
+@(for all-posts)
+<li><a href="$(url)">$(title)</a></li>
+@(end)
 </ul>
 
+<h2>Pagination sample</h2>
+<ul>
+@(for posts)
+<li><a href="$(url)">$(date-format date "yyyy MM dd") - $(title)</a></li>
+@(end)
+</ul>
 @(if next-page)
 <a href="$(next-page)">Older posts &raquo;</a>
 @(end)
 
 @(if prev-page)
-<a href="$(prev-page)">Newer posts &laquo;</a>
+<a href="$(prev-page)">&laquo; Newer posts</a>
 @(end)
 
-<h2>Sample tags</h2>
+<h2>Links</h2>
 <ul>
-  @(for all-tags)
-  <li><a href="$(url)">$(name)($(count))</a></li>
-  @(end)
-</ul>
-
-<h2>Sample Archives</h2>
-<ul>
-  <li><a href="$(root)archives.html">Arcives page.</a></li>
-</ul>
-
-
-<h2>Custom function</h2>
-<ul>
-  <li>_config.clj<br/>
-    <pre>
-      :cuma { :extension "extension.clj" }
-    </pre>
-  </li>
-  <li>template<br/>
-    <pre>
-      ＄(hello "world")
-    </pre>
-  </li>
-  <li>output<br/>
-    $(hello "world")
-  </li>
+  <li><a href="$(root)archives.html">Archives</a></li>
 </ul>

@@ -71,7 +71,7 @@
               ;;                           :allow-layout? false
               ;;                           :skip-runtime-exception? true)
               :url (make-url %)))
-         (msk/get-post-files :sort? true :all? all?))))
+         (msk/get-post-files :sort? false :all? all?))))
 
 (defn get-all-tags
   "Get all(unfiltered) tags from post list.
@@ -134,7 +134,7 @@
             :posts     posts ;; page-posts per all-posts
             :all-posts all-posts
             :all-tags  (get-tags :count-by-name? true)
-            :recent-posts (take (:recent-posts-num site) all-posts)
+            :recent-posts (take (:recent-posts-num *config*) all-posts)
             :tag-name  tag-name
             :archives  (make-arichves all-posts) 
             :date-xml-schema (date->xml-schema date)

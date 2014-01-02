@@ -37,7 +37,7 @@
         {:name tag
          :url  (make-tag-url tag)})))
 
-(defn- parse-option-line
+(defn parse-option-line
   [line]
   (re-seq #"^[;#]+\s*@([\w?]+)\s+(.+)$" line))
 
@@ -54,7 +54,8 @@
 (defn remove-option-lines
   "Remove option lines from slurped template file."
   [slurped-data]
-  (let [lines  (map str/trim (str/split-lines slurped-data))]
+  (let [lines  (str/split-lines slurped-data)       ;(map str/trim (str/split-lines slurped-data))
+        ]
     (str/join "\n" (remove #(parse-option-line %) lines))))
 
 (defn remove-useless-html-lines

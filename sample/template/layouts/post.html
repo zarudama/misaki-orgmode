@@ -9,25 +9,26 @@
 <div id="page">
   $(raw content)
 </div>
-
-<div class="tag">
-  <h2>tags</h2>
-  <ul>
-    @(for tags)
-    <li><span><a href="$(url)">$(name)</a></span></li>
-    @(end)
-  </ul>
-</div>
-
-<div class="pager">
-  @(if prev)
-  <a href="$(url)">&laquo; $(title)</a>
-  @(end)
-  &nbsp;&nbsp;
-  @(if next)
-  <a href="$(url)">&raquo; $(title)</a>
-  @(end)
-</div>
+<footer class="article-footer">
+  <nav class="tag">
+    <ul>
+      @(for tags)
+      <li><span><a href="$(url)">$(name)</a></span></li>
+      @(end)
+    </ul>
+  </nav>
+  <nav>
+    <ul class="pager">
+      @(if prev)
+      <li class="prev"><a href="$(url)">&laquo; $(title)</a></li>
+      @(end)
+      &nbsp;&nbsp;
+      @(if next)
+      <li class="next"><a href="$(url)">&raquo; $(title)</a></li>
+      @(end)
+    </ul>
+  </nav>
+</footer>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">

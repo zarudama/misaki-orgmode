@@ -1,0 +1,31 @@
+# @layout post
+# @title  Getting Started
+# @date 2099-12-1 
+# @tags tag1
+#+OPTIONS: toc:nil
+
+* Prerequisites
+Please install all the latest edition.
+
+- [[http://www.oracle.com/technetwork/java/javase/downloads/index.html][Java(jre)]]
+- [[https://github.com/technomancy/leiningen][Leiningen]]
+- [[http://www.gnu.org/software/emacs/][Emacs]]
+
+* Usage
+describe an absolute path of emacs to use for the compilation of the org file first.
+
+=misaki-orgmode/sample/_config.clj=
+#+BEGIN_EXAMPLE
+ :emacs "/usr/local/bin/emacs"
+#+END_EXAMPLE
+
+* Run sample
+#+BEGIN_SRC sh
+$ git clone git@github.com:mikio/misaki-orgmode.git
+$ cd misaki-orgmode
+$ lein run sample
+#+END_SRC
+Access http://localhost:8080
+
+* See also
+- http://liquidz.github.io/misaki/toc/01-getting-started.html
