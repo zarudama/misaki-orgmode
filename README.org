@@ -1,93 +1,18 @@
-# @layout layout
-# @title  README
 
 [[http://mikio.github.com/misaki-orgmode/img/misaki-orgmode-logo.png]]
 
 misaki-orgmode is one of [[https://github.com/liquidz/misaki][Misaki]]'s compiler plugin.
 This compiler allows you to use [[http://orgmode.org][Org mode]] and [[https://github.com/liquidz/cuma][cuma templates]] instead of S-exp templates.
 
-* Demo site
+* Demo & Document site
 - http://mikio.github.io/misaki-orgmode/
 
-* requirement
-- java
-- lein
-- emacs
-- org-mode
-
-* installation
-1. jre install
-1. lein install
-1. emcas org-mode install
-
-* Usage
-** emacs setting
- =sample/_config.clj= を編集します。
-orgファイルのコンパイルに使用するemacsの絶対パスを記述します。
-#+BEGIN_EXAMPLE
- :emacs "/usr/local/bin/emacs"
-#+END_EXAMPLE
-
-** Run sample
-#+BEGIN_SRC sh
-$ git clone git@github.com:mikio/misaki-orgmode.git
-$ cd misaki-orgmode
-$ lein run sample
-#+END_SRC
-
-* Configuration
- =sample/_config.clj= を編集します。
-
-サイトの設定をします。 =:site-title=, =:site-subtitle=, =disqus-id=, =recent-posts-num= などを修正します。
-#+BEGIN_EXAMPLE
- :site {:site-title "misaki orgmode"
-        :site-subtitle "Misaki orgmode is static blog generator for org-mode based on Misaki."
-        :your-domain "mikio.github.io"
-        :twitter-id "mikio_kun"
-        :disqus-id  "foofoomikiokunblog"
-        }
-#+END_EXAMPLE
-
-* custimize
-
-index.htmlに表示される記事一覧の位置ページの記事数を修正するには、 =:posts-per-page= を修正します。
-#+BEGIN_EXAMPLE
- :posts-per-page 2
-#+END_EXAMPLE
-
-:recent-posts-num 2
-#+BEGIN_EXAMPLE
- :posts-per-page 2
-#+END_EXAMPLE
-
-もし、出力されるhtmlファイルのフォーマットを変更したければ下記を修正します。
-#+BEGIN_EXAMPLE
- :post-filename-regexp #"^(.+)$"
- :post-filename-format "$(year)/$(month)/$(day)_$(filename)"
-#+END_EXAMPLE
-
-新しくレイアウトファイルを生成し、そのファイルが記事に依存するならば下記に追加します。
-#+BEGIN_EXAMPLE
- :compile-with-post ["index.html" "archives.html" "atom.xml"]
-#+END_EXAMPLE
-
-デフォルトでは、記事のURLは ="/"= から始まりますが、これを変更したい場合は =:url-base= を修正します。
-#+BEGIN_EXAMPLE
- :url-base "/"
-#+END_EXAMPLE
-
-** Example template
-#+BEGIN_EXAMPLE
-;;;;;;;;;;;
-#+END_EXAMPLE
-
 * TODOLIST
-- Documents
 - htmlize.el
 - emacs server
 - windows path
 - cuma comment
-- cuma escape
+- cuma escape for org-mode
 
 * License
 

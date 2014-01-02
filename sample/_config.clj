@@ -10,7 +10,7 @@
  :post-filename-regexp #"(\d{4})-(\d{1,2})-(\d{1,2})[-_](.+)$"
  :post-filename-format "$(year)-$(month)/$(filename)"
  :compile-with-post ["index.html" "archives.html" "atom.xml"]
- ;;:url-base "/misaki-orgmode/"
+;; :url-base "/misaki-orgmode/"
  :url-base "/"
  :posts-per-page 2
  :recent-posts-num 2
@@ -22,7 +22,7 @@
         :atom          "atom.xml"
         :atom-base     "http://localhost:8080"
         :twitter-id    "mikio_kun"
-        :disqus-id     "mikiokunblog"
+        :disqus-id     "foomikiokunblog"
         :local {:css   ["css/main.css"]
                 :js    ["js/highlight.pack.js"
                         "js/main.js"]}
