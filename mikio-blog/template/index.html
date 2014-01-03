@@ -1,0 +1,35 @@
+; @layout layout
+; @title  misaki orgmode
+; @orgmode? false
+<br/>
+<p>
+  misaki-orgmode is one of <a href="https://github.com/liquidz/misaki">Misaki</a>'s compiler plugin.</p>
+<p>
+  This compiler allows you to use <a href="http://orgmode.org">Org mode</a> and <a href="https://github.com/liquidz/cuma">cuma templates</a> instead of S-exp templates.
+</p>
+
+<h2>Table of contents</h2>
+<ul>
+@(for all-posts)
+<li><a href="$(url)">$(title)</a></li>
+@(end)
+</ul>
+
+<h2>Pagination sample</h2>
+<ul>
+@(for posts)
+<li><a href="$(url)">$(date-format date "yyyy MMM dd") - $(title)</a></li>
+@(end)
+</ul>
+@(if next-page)
+<a href="$(next-page)">Older posts &raquo;</a>
+@(end)
+
+@(if prev-page)
+<a href="$(prev-page)">&laquo; Newer posts</a>
+@(end)
+
+<h2>Links</h2>
+<ul>
+  <li><a href="$(root)archives.html">Archives</a></li>
+</ul>

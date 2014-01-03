@@ -1,0 +1,17 @@
+; @layout   layout
+; @orgmode? false
+; @title tag-templ
+<article>
+  <headr>
+    <div class="article-header">
+      <h1>$(tag-name)</h1>
+    </div>
+  </headr>
+  <div class="content">
+    <ul>
+      @(for posts)
+      <li><a href="$(url)">$(date-format date "yyyy MMM dd") - $(title)</a></li>
+      @(end)
+    </ul>
+  </div>
+</article>

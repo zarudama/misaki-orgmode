@@ -1,0 +1,116 @@
+# @layout post
+# @title Edit templates
+# @date 2060-1-1 
+# @tags tag2
+#+OPTIONS: toc:t
+# "@" => "&#64;"
+# "$" => "&#36;"
+
+* orgfiles
+You describe the contents of the article in org-mode of emacs.
+
+But it is necessary to describe the following header by all means in the beginning of the file.
+
+#+BEGIN_HTML
+<pre>
+# &#64;layout post
+# &#64;title Edit templates
+# &#64;date 2014-1-1 
+# &#64;tags tag1 tag2 tag3
+#+OPTIONS: toc:nil
+</pre>
+#+END_HTML
+
+- @ layout :: appoint a file name to decide the layout of the article.
+- @ title :: appoint the title of the article.
+-  date :: appoint the date of the article. The format is "YYYY-MM-DD".
+- @ tags :: appoint tag of the article.
+- #+OPTIONS: :: appoint =toc:nil= if You want to display a table of contents if You do not want to do =toc:t=.
+
+Use =#BEGIN_HTML= as follows if You want to use cuma to mention later.
+#+BEGIN_HTML
+<pre>
+ #@+BEGIN_HTML
+ &#36;(hello "world")
+ #@+END_HTML
+</pre>
+#+END_HTML
+
+
+* htmlfiles
+The html of Misaki org-mode uses [[https://github.com/liquidz/cuma][cuma template]].
+#+BEGIN_EXAMPLE
+├── archives.html ;; A list of articles.
+├── atom.xml      ;; for rss.
+├── index.html    ;; for top page.
+├── layouts
+│   ├── layout.html ;; The layout file which becomes the base of all articles.
+│   ├── post.html   ;; for post file.
+│   └── tag.html    ;; The layout file of the list of articles including the tag.
+└── posts
+#+END_EXAMPLE
+
+It is necessary to understand =*site*= variable to access from template a site info.
+Please refer to follows for the =*site*= variable.
+
+- http://liquidz.github.io/misaki/toc/03-edit-template.html
+
+** examples
+
+*** A list of all articles.
+#+BEGIN_HTML
+<pre>
+&lt;ul&gt;
+&#64;(for all-posts)
+&lt;li&gt;&lt;a href="&#36;(url)"&gt;&#36;(title)&lt;/a&gt;&lt;/li&gt;
+&#64;(end)
+&lt;/ul&gt;
+</pre>
+#+END_HTML
+
+#+BEGIN_HTML
+<ul>
+@(for all-posts)
+<li><a href="$(url)">$(title)</a></li>
+@(end)
+</ul>
+#+END_HTML
+
+*** A list of All tags.
+
+#+BEGIN_HTML
+<pre>
+&lt;ul&gt;
+&#64;(for all-tags)
+  &lt;li&gt;&lt;a href="&#36;(url)"&gt;&#36;(name)(&#36;(count))&lt;/a&gt;&lt;/li&gt;
+&#64;(end)
+&lt;/ul&gt;
+</pre>
+#+END_HTML
+
+#+BEGIN_HTML
+<ul>
+@(for all-tags)
+  <li><a href="$(url)">$(name)($(count))</a></li>
+@(end)
+</ul>
+#+END_HTML
+
+** The additional method of the definition of Custom Functions.
+You can use it in a template file if You add a function to  =misaki-orgmode/sample/extension.clj= .
+#+BEGIN_SRC clojure
+(defn hello
+  [data s]
+  (str/upper-case (str "hello " s "!!!")))
+#+END_SRC
+
+call it as follows.
+#+BEGIN_HTML
+<pre>
+  &#36;(hello "world") => hello world
+</pre>
+#+END_HTML
+#+BEGIN_HTML
+$(hello "world")
+#+END_HTML
+

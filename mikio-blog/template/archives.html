@@ -1,0 +1,18 @@
+; @layout layout
+; @title  Archives
+; @orgmode? false
+<header>
+  <div class="article-header">
+    <h1>$(title)</h1>
+  </div>
+</header>
+<div class="content">
+  @(for archives)
+  <h2>$(year)</h2>
+  <ul>
+    @(for posts)
+    <li><a href="$(url)">$(date-format date "MM dd") - $(title)</a></li>
+    @(end)
+  </ul>
+  @(end)
+</div>

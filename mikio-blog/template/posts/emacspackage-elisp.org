@@ -1,0 +1,112 @@
+# @layout post
+# @title .emacsに必要なpackage を指定して自動で各種elispをインストールする
+# @date 2013-01-06 
+# @tags emacs
+
+今までパッケージ管理には =el-get= を使用してきたのですが、
+Windows環境がメインだと =git clone= がうまくいかなかったり、
+インストール後のビルド工程が失敗したりで、なかなか難儀していたので、
+el-getを辞めemacs標準の =package.el= をメインにすることにしました。
+
+=package.el= ならば標準装備ですし、サイトリポジトリに各所のelispがダウンロードされた状態なので
+httpですべてインストールできるので大抵の環境でうまく動きます。
+
+パッケージのリポジトリサイトとしては、昔はMarmaladeが更新が盛んだったのですが、
+最近ではMELPAがメインになってきてるようです。なので私は、MELPAメインで使用してます。
+Marmaladeは無効にしています。理由は同じパッケージが同時に表示されてしまうからです。
+
+以下は私の設定です。
+#+BEGIN_SRC emacs-lisp
+(require 'mikio-util)
+
+(when (require 'package nil t)
+
+  ;; Marmalade
+  ;; (add-to-list 'package-archives
+  ;;              '("marmalade" . "http://marmalade-repo.org/packages/"))
+
+  ;; MELPA
+  ;; (add-to-list 'package-archives
+  ;;              '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+  ;; MELPAのみにする。
+  (setq package-archives (list '("melpa" . "http://melpa.milkbox.net/packages/")))
+
+	
+
+  ;;インストールするディレクトリを指定
+  (setq my-package-directory (mikio/elisp-home "package"))
+  (mikio/make-directory my-package-directory)
+  (setq package-user-dir (concat my-package-directory "/"))
+
+  ;; 
+  (package-initialize)
+
+  (setq my-packages
+        '(undo-tree
+          helm
+          auto-complete
+          popwin
+          smartrep
+          color-moccur
+          yasnippet
+
+          helm-git
+          helm-gtags
+          helm-c-moccur
+          helm-c-yasnippet
+
+          paredit
+          ruby-mode
+          php-mode
+          js2-mode
+          web-mode
+
+          nrepl
+          nrepl-ritz
+          ac-nrepl
+          ;;ac-slime
+          magit
+
+          jaunte
+          rainbow-delimiters
+
+          ;; window manager by kiwanami
+          window-layout
+          e2wm
+
+          twittering-mode
+          ;;o-blog
+
+          evil
+          ))
+
+  (require 'cl)
+  (mapcar (lambda (x)
+            (when (not (package-installed-p x))
+              (package-install x)))
+          my-packages)
+)
+
+(provide 'mikio-package)
+#+END_SRC
+githubはこちら。
+- https://github.com/mikio/dotfiles/blob/master/emacs/mikio/mikio-package.el
+
+ =my-packages= に自分の必要なパッケージをまとめて定義しています。
+こうすることによって、環境が変わってもemacs起動時に自動的にインストール
+してくれるので楽チンです。
+
+** 2013/05/13 追記1:
+ MELPAリポジトリは、常に最新のパッケージを取得してしまうためアップグレードする際は注意が必要です。
+Uコマンドなどで間違ってアップグレードしてしまっても多分もとに戻せません。
+一方Marmaladeリポジトリの場合、 自分のローカルPCに過去のバージョンの履歴が残っている可能性があるので、
+ダウングレードする道があります(手順は知りませんが)。
+- https://github.com/emacs-jp/emacs-jp.github.com/issues/31
+
+** 2013/05/13 追記2:
+本文では、gitプロトコルでel-getが失敗すると書きましたが、下記の方法を試せば問題ないかもしれません(未検証)。
+- http://mikio.github.io/article/2013/05/03_git.html
+
+** 2013/05/13 追記3:
+el-getも全く使用していないというわけではなく、EmacsWikiなどhttp通信するものに関しては使用しています。

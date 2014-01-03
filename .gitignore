@@ -17,3 +17,10 @@ watcher.rb
 /sample/public/atom.xml
 /sample/public/index.html
 /sample/public/archives.html
+/mikio-blog/public/20*
+/mikio-blog/public/article/*
+/mikio-blog/public/page[0-9]*
+/mikio-blog/public/tag
+/mikio-blog/public/atom.xml
+/mikio-blog/public/index.html
+/mikio-blog/public/archives.html
