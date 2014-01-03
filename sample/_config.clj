@@ -11,8 +11,8 @@
  :post-filename-format "$(year)-$(month)/$(filename)"
  ;;:post-filename-format "article/$(year)/$(month)/$(day)_$(filename)" ;; o-blog format
  :compile-with-post ["index.html" "archives.html" "atom.xml"]
- :url-base "/misaki-orgmode/"
- ;;:url-base "/"
+ ;;:url-base "/misaki-orgmode/"
+ :url-base "/"
  :posts-per-page 2
  :recent-posts-num 2
  :emacs "/usr/local/bin/emacs"
