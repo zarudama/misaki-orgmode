@@ -86,6 +86,10 @@ hr + p {
 }
 
 /* tag style */
+.tag {
+    margin-top: 2em;
+    border-top: 1px solid #eaeaea;
+}
 .tag ul { margin: 10px 0 0 30px; padding: 0; list-style: none;  }
 .tag ul li { display: inline; margin-right: 10px; }
 .tag ul li a {
@@ -208,3 +212,50 @@ pre code {
     margin: 1px;
     list-style: none;
 }
+
+.builtin {
+  /* font-lock-builtin-face */
+  color: #da70d6;
+}
+.comment {
+  /* font-lock-comment-face */
+  color: #b22222;
+}
+.comment-delimiter {
+  /* font-lock-comment-delimiter-face */
+  color: #b22222;
+}
+.constant {
+  /* font-lock-constant-face */
+  color: #5f9ea0;
+}
+.function-name {
+  /* font-lock-function-name-face */
+  color: #0000ff;
+}
+.keyword {
+  /* font-lock-keyword-face */
+  color: #a020f0;
+}
+.string {
+  /* font-lock-string-face */
+  color: #aaa;
+}
+.doc {
+  /* font-lock-doc-face */
+  color: #8b2252;
+}
+.type {
+  /* font-lock-type-face */
+  color: #228b22;
+}
+.variable-name {
+  /* font-lock-variable-name-face */
+  color: #b8860b;
+}
+.warning {
+  /* font-lock-warning-face */
+  color: #ff0000;
+  font-weight: bold;
+}
+

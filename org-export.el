@@ -13,8 +13,8 @@
 ;;;
 
 ;;; add a pathof major-mode of each language after having put path to htmlise through code if You want coloring.
-;;(add-to-list 'load-path "~/Dropbox/dotfiles/emacs/package/htmlize-20130207.2102/")
-;;(add-to-list 'load-path "~/Dropbox/dotfiles/emacs/package/clojure-mode-20131222.444/")
+(add-to-list 'load-path "~/Dropbox/dotfiles/emacs/package/htmlize-20130207.2102/")
+(add-to-list 'load-path "~/Dropbox/dotfiles/emacs/package/clojure-mode-20131222.444/")
 (require 'htmlize)
 
 (setq org-src-fontify-natively t)
@@ -30,6 +30,9 @@
 ;;; no parse code of "TeX" and "LaTeX"
 (setq org-export-with-TeX-macros nil)
 (setq org-export-with-LaTeX-fragments nil)
+
+;;(setq org-export-htmlize-output-type 'css)
+(setq org-export-with-toc nil)
 
 ;;;
 ;;; end of custmoize org-mode

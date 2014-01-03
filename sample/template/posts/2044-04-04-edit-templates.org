@@ -3,32 +3,38 @@
 # @date 2060-1-1 
 # @tags tag2
 #+OPTIONS: toc:t
+# "@" => "&#64;"
+# "$" => "&#36;"
 
 * orgfiles
 You describe the contents of the article in org-mode of emacs.
 
 But it is necessary to describe the following header by all means in the beginning of the file.
 
-#+BEGIN_EXAMPLE
- # @layout post
- # @title Edit templates
- # @date 2014-1-1 
- # @tags tag1 tag2 tag3
- #+OPTIONS: toc:nil
-#+END_EXAMPLE
+#+BEGIN_HTML
+<pre>
+# &#64;layout post
+# &#64;title Edit templates
+# &#64;date 2014-1-1 
+# &#64;tags tag1 tag2 tag3
+#+OPTIONS: toc:nil
+</pre>
+#+END_HTML
 
-- @layout :: appoint a file name to decide the layout of the article.
-- @title :: appoint the title of the article.
-- @date :: appoint the date of the article. The format is "YYYY-MM-DD".
-- @tags :: appoint tag of the article.
+- @ layout :: appoint a file name to decide the layout of the article.
+- @ title :: appoint the title of the article.
+- @ date :: appoint the date of the article. The format is "YYYY-MM-DD".
+- @ tags :: appoint tag of the article.
 - #+OPTIONS: :: appoint =toc:nil= if You want to display a table of contents if You do not want to do =toc:t=.
 
-Use a as follows if You want to use cuma to mention later.
-#+BEGIN_EXAMPLE
- #+BEGIN_HTML
- ＄(hello "world")
- #+END_HTML
-#+END_EXAMPLE
+Use =#BEGIN_HTML= as follows if You want to use cuma to mention later.
+#+BEGIN_HTML
+<pre>
+ #@+BEGIN_HTML
+ &#36;(hello "world")
+ #@+END_HTML
+</pre>
+#+END_HTML
 
 
 * htmlfiles
@@ -52,13 +58,15 @@ Please refer to follows for the =*site*= variable.
 ** examples
 
 *** A list of all articles.
-#+BEGIN_EXAMPLE
-<ul>
-＠(for all-posts)
-<li><a href="＄(url)">＄(title)</a></li>
-＠(end)
-</ul>
-#+END_EXAMPLE
+#+BEGIN_HTML
+<pre>
+&lt;ul&gt;
+&#64;(for all-posts)
+&lt;li&gt;&lt;a href="&#36;(url)"&gt;&#36;(title)&lt;/a&gt;&lt;/li&gt;
+&#64;(end)
+&lt;/ul&gt;
+</pre>
+#+END_HTML
 
 #+BEGIN_HTML
 <ul>
@@ -70,13 +78,15 @@ Please refer to follows for the =*site*= variable.
 
 *** A list of All tags.
 
-#+BEGIN_EXAMPLE
-<ul>
-＠(for all-tags)
-  <li><a href="＄(url)">＄(name)(＄(count))</a></li>
-＠(end)
-</ul>
-#+END_EXAMPLE
+#+BEGIN_HTML
+<pre>
+&lt;ul&gt;
+&#64;(for all-tags)
+  &lt;li&gt;&lt;a href="&#36;(url)"&gt;&#36;(name)(&#36;(count))&lt;/a&gt;&lt;/li&gt;
+&#64;(end)
+&lt;/ul&gt;
+</pre>
+#+END_HTML
 
 #+BEGIN_HTML
 <ul>
@@ -95,9 +105,12 @@ You can use it in a template file if You add a function to  =misaki-orgmode/samp
 #+END_SRC
 
 call it as follows.
-#+BEGIN_EXAMPLE
-  ＄(hello "world") => hello world
-#+END_EXAMPLE
+#+BEGIN_HTML
+<pre>
+  &#36;(hello "world") => hello world
+</pre>
+#+END_HTML
 #+BEGIN_HTML
 $(hello "world")
 #+END_HTML
+

@@ -15,6 +15,7 @@
  :posts-per-page 2
  :recent-posts-num 2
  :emacs "/usr/local/bin/emacs"
+ :lang "en"
 
  :site {:site-title    "Misaki orgmode"
         :site-subtitle "Misaki orgmode is static blog generator for org-mode based on Misaki."

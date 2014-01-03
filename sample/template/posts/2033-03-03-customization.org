@@ -2,7 +2,6 @@
 # @title Customization
 # @date 2070-1-1 
 # @tags tag2
-#+OPTIONS: toc:nil
 You can customize a site by editing =misaki-orgmode/sample/_config.clj=.
 
 You revise =:posts-per-page= to change the number of the articles of the list of articles displayed by index.html.
@@ -44,3 +43,10 @@ When the contents of the file which you added have article names, You add it as 
  :compile-with-post ["index.html" "archives.html" "atom.xml" "about.html"]
 #+END_EXAMPLE
 
+
+#+BEGIN_SRC clojure
+(import (java.awt.image BufferedImage))
+(import (javax.imageio ImageIO))
+(import (java.io File))
+(def image (ImageIO/read (File. "gai.png")))
+#+END_SRC
