@@ -11,6 +11,7 @@ pom.xml
 .lein-repl-history
 watcher.rb
 /sample/public/20*
+/sample/public/article/*
 /sample/public/page[0-9]*
 /sample/public/tag
 /sample/public/atom.xml

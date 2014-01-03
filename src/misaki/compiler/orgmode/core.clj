@@ -12,7 +12,8 @@
     [server :as srv]]
    [clojure.string :as str]
    [clj-time.core  :refer [date-time]]
-   ))
+   )
+  (:import [java.io File]))
 
 (declare make-base-site-data)
 
@@ -34,13 +35,40 @@
     (str (remove-last-extension s) ".html")
     s))
 
+(defn- make-post-output-filename
+  "Make post output filename from java.io.File."
+  [#^File file post-date]
+  {:pre [(file? file)]}
+  (let [filename (.getName file)
+        output-name (render (:post-filename-format *config*)
+                            {:year     (year post-date)
+                             :month    (month post-date)
+                             :day      (day post-date)
+                             :filename filename})]
+    output-name
+    ))
+
+(defn make-post-output-url
+  "Make output url from java.io.File."
+  [#^File file post-date]
+  {:pre [(file? file)]}
+  (path (:url-base *config*) (make-post-output-filename file post-date)))
+
 (def ^{:private true} make-url
   "Make output url from java.io.File."
   (comp org-extension->html-extension cnf/make-output-url))
 
+(def ^{:private true} make-post-url
+  "Make output url from java.io.File."
+  (comp org-extension->html-extension make-post-output-url))
+
 (def ^{:private true} make-filename
   "Make output filename from java.io.File."
   (comp org-extension->html-extension cnf/make-output-filename))
+
+(def ^{:private true} make-post-filename
+  "Make output filename from java.io.File."
+  (comp org-extension->html-extension make-post-output-filename))
 
 (defn- load-extension-files
   "Load cuma extension files."
@@ -72,7 +100,7 @@
               ;; :content (render-template % (merge (:site *config*) site)
               ;;                           :allow-layout? false
               ;;                           :skip-runtime-exception? true)
-              :url (make-url %)))
+              :url (make-post-url % date)))
          (msk/get-post-files :sort? false :all? all?))))
 
 (defn get-all-tags
@@ -196,7 +224,7 @@
        (when (= :single (:-compiling config))
          (if prev (msk/compile* {:-compiling :neighbor} (:file prev)))
          (if next (msk/compile* {:-compiling :neighbor} (:file next))))
-       {:status true, :filename (make-filename file)
+       {:status true, :filename (make-post-filename file post-date)
         :body res})
 
      ;; other templates

@@ -7,11 +7,12 @@
  :post-dir     "posts/"
  :layout-dir   "layouts/"
  :tag-layout   "tag" ;; => tag tamplate. {layout-dir}/{tag-layout}.html
- :post-filename-regexp #"(\d{4})-(\d{1,2})-(\d{1,2})[-_](.+)$"
+ :post-filename-regexp #"^.+$"
  :post-filename-format "$(year)-$(month)/$(filename)"
+ ;;:post-filename-format "article/$(year)/$(month)/$(day)_$(filename)" ;; o-blog format
  :compile-with-post ["index.html" "archives.html" "atom.xml"]
-;; :url-base "/misaki-orgmode/"
- :url-base "/"
+ :url-base "/misaki-orgmode/"
+ ;;:url-base "/"
  :posts-per-page 2
  :recent-posts-num 2
  :emacs "/usr/local/bin/emacs"
