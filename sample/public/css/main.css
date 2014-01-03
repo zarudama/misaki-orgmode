@@ -70,12 +70,17 @@ hr + p {
     text-align: right;
 }
 
-/* page header style */
-.page-header { margin: 1.5em 0 0.5em 0; border-bottom: 1px solid #eaeaea; overflow: hidden; }
-.page-header h1 { color: #444; font-weight: normal; float: left; }
-.page-header h1 span { color: #93ca76; font-weight: bold; }
-.page-header p.date { float: right; margin: 20px 10px 0 30px; font-weight: bold; letter-spacing: 1px; color: #444; }
-.page-header h1 a {
+/* article header style */
+.article-header { 
+    margin: 1em 0 1em 0;
+    border-bottom: 1px solid #eaeaea; 
+    overflow: hidden; 
+    font-size: 1.5em;
+}
+.article-header h1 { color: #444; font-weight: normal; float: left; }
+.article-header h1 span { color: #93ca76; font-weight: bold; }
+.article-header p.date { float: right; margin: 20px 10px 0 30px; font-weight: bold; letter-spacing: 1px; color: #444; }
+.article-header h1 a {
     text-decoration: none;
     color: #444;
 }
@@ -93,7 +98,6 @@ hr + p {
 .tag ul li a:hover { opacity: 0.5; }
 
 .pager {
-    float: none;
     box-shadow: 0 0 5px #fde3e3;
     margin: 10px;
     padding: 10px;
@@ -120,6 +124,9 @@ hr + p {
 }
 
 /* org-mode */
+.content {
+    clear: both;
+}
 code, pre {
     margin: 1em;
     padding: 0.5em;
@@ -163,9 +170,9 @@ pre code {
     overflow-y: scroll;
 }
 
-#page pre.src,
-#page pre.example,
-#page .modal-body > pre {
+.content pre.src,
+.content pre.example,
+.content .modal-body > pre {
     resize: both;
     overflow: auto;
     -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
@@ -175,15 +182,15 @@ pre code {
     background: #2e3436;
     color: #eeeeec;
 }
-#page pre.src span.linenr,
-#page pre.example span.linenr,
-#page .modal-body > pre span.linenr {
+.content pre.src span.linenr,
+.content pre.example span.linenr,
+.content .modal-body > pre span.linenr {
     font-style: italic;
     font-weight: bold;
 }
-#page pre.src span.code-highlighted,
-#page pre.example span.code-highlighted,
-#page .modal-body > pre span.code-highlighted {
+.content pre.src span.code-highlighted,
+.content pre.example span.code-highlighted,
+.content .modal-body > pre span.code-highlighted {
     background: darkolivegreen;
 }
 

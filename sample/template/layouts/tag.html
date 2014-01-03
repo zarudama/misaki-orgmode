@@ -1,12 +1,16 @@
 ; @layout   layout
 ; @orgmode? false
-<div class="page-header">
-  <h1>$(tag-name)</h1>
-</div>
-<div id="page">
-  <ul>
-    @(for posts)
-    <li><a href="$(url)">$(date-format date "yyyy MM dd") - $(title)</a></li>
-    @(end)
-  </ul>
-</div>
+<article>
+  <headr>
+    <div class="article-header">
+      <h1>$(tag-name)</h1>
+    </div>
+  </headr>
+  <div class="content">
+    <ul>
+      @(for posts)
+      <li><a href="$(url)">$(date-format date "yyyy MMM dd") - $(title)</a></li>
+      @(end)
+    </ul>
+  </div>
+</article>

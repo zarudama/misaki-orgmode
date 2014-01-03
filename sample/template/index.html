@@ -18,7 +18,7 @@
 <h2>Pagination sample</h2>
 <ul>
 @(for posts)
-<li><a href="$(url)">$(date-format date "yyyy MM dd") - $(title)</a></li>
+<li><a href="$(url)">$(date-format date "yyyy MMM dd") - $(title)</a></li>
 @(end)
 </ul>
 @(if next-page)

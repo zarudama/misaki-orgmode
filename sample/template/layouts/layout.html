@@ -23,12 +23,13 @@
     <title>$(title)</title>
   </head>
   <body>
-    <div class="global-header" />
-    <div class="container">
-      <div class="site-header">
+    <header class="global-header">
+      <div class="container site-header">
         <h1><a href="$(root)">$(site-title)</a></h1>
         <p>$(site-subtitle)</p>
       </div>
+    </header>
+    <div class="container">
       $(raw content)
     </div>
     @(for local.js)
