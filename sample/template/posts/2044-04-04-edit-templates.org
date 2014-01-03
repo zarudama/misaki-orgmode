@@ -23,7 +23,7 @@ But it is necessary to describe the following header by all means in the beginni
 
 - @ layout :: appoint a file name to decide the layout of the article.
 - @ title :: appoint the title of the article.
-- @ date :: appoint the date of the article. The format is "YYYY-MM-DD".
+-  date :: appoint the date of the article. The format is "YYYY-MM-DD".
 - @ tags :: appoint tag of the article.
 - #+OPTIONS: :: appoint =toc:nil= if You want to display a table of contents if You do not want to do =toc:t=.
 

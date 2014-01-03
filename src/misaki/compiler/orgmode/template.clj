@@ -45,7 +45,7 @@
   "Get template option from slurped template file."
   [slurped-data]
   (if (string? slurped-data)
-    (let [lines  (map str/trim (str/split-lines slurped-data))
+    (let [lines  (map str/trimr (str/split-lines slurped-data))
           params (remove nil? (map parse-option-line lines))
           option (into {} (for [[[_ k v]] params] [(keyword k) v]))]
       (assoc option :tags (-> option :tags parse-tag-string)))

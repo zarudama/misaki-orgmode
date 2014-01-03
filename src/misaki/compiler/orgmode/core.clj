@@ -63,10 +63,12 @@
   [& {:keys [all?] :or {all? false}}]
   (let [site (make-base-site-data :ignore-post? true)]
     (map #(let [slurp-data (slurp %)
-                option (get-template-option slurp-data)]
+                option (get-template-option slurp-data)
+                date (string->date (:date option))]
             (assoc option 
               :file %
-              :date (string->date (:date option))
+              :date date
+              :date-hoge date
               ;; :content (render-template % (merge (:site *config*) site)
               ;;                           :allow-layout? false
               ;;                           :skip-runtime-exception? true)
@@ -127,7 +129,7 @@
         posts (mskcfg/get-page-posts all-posts)
         ]
     (merge site
-           {:date      (date->string date)
+           {;;:date      (date->string date)
             :root      (:url-base *config*)
             :next-page (:next-page *config*)
             :prev-page (:prev-page *config*)
@@ -181,9 +183,11 @@
      ;; post template
      (cnf/post-file? file)
      (let [site        (make-base-site-data)
-           tags        (:tags (get-template-option (slurp file)))
+           option      (get-template-option (slurp file))
+           tags        (:tags option)
+           post-date   (string->date (:date option)) 
            [prev next] (get-prev-next #(= file (:file %)) (:all-posts site))
-           site        (assoc site :prev prev :next next)
+           site        (assoc site :prev prev :next next :post-date post-date)
            res (render-template file site)]
        (if (> (count tags) 0)
          (doseq [{tag-name :name} tags]
