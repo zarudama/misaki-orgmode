@@ -24,9 +24,9 @@ blockquote p:before { content: '> '; }
     display: block;
     font-size: 0;
     text-indent:200%;
-    background: transparent url(../img/misaki-orgmode-logo.png) no-repeat top left;
-    width: 404;
-    height: 70px;
+    background: transparent url(../img/zarudama-logo.png) no-repeat top left;
+    width: 444px;
+    height: 80px;
 }
 .site-header p {
     margin: 0.5em;

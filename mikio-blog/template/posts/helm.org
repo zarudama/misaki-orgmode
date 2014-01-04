@@ -1,0 +1,26 @@
+# @layout post
+# @title helmのファイル一覧でパスを表示する
+# @date 2013-6-14 
+# @tags emacs helm
+helmをアップデートしたら、ファイルの一覧がファイル名のみになってしまい、
+パス部分が表示されなくなってしまった。
+デフォルトの挙動が変更されたようである。
+
+自分の場合、helm-git.elを使用しているが、
+同じリポジトリに同名ファイルが複数あるため、
+ファイル名だけになると、どのディレクトリのファイルかがわからなくなってしまう。
+これでは困るので調査したところ、ファイル表示部分は、helm本体の =helm-files.el=
+の機能を流用しており、下記のカスタム変数を定義すればよさそうである。
+#+BEGIN_SRC emacs-lisp
+(defcustom helm-ff-transformer-show-only-basename t
+  "Show only basename of candidates in `helm-find-files'.
+This can be toggled at anytime from `helm-find-files' with \
+\\<helm-find-files-map>\\[helm-ff-run-toggle-basename]."
+  :type 'boolean
+  :group 'helm-files)
+#+END_SRC
+
+.emacsに下記の定義をすることで無事解決できた。
+#+BEGIN_SRC emacs-lisp
+(setq helm-ff-transformer-show-only-basename nil)
+#+END_SRC

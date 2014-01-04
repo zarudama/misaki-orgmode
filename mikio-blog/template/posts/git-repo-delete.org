@@ -1,0 +1,40 @@
+# @layout post
+# @title 削除したはずリモートブランチが、別のリポジトリから見ると削除されていない。
+# @date 2012-08-29
+# @tags git
+
+サーバー上で削除されたリモートブランチは、自動ではローカルリポジトリに反映されない仕様らしい。
+- http://blog.s21g.com/articles/992
+なので、とあるリポジトリで削除したはずのリモートブランチが、別のリポジ
+トリから見ると生きのこってたりする。 =git remote show origin= で確認で
+きる。
+#+BEGIN_SRC sh
+$ git remote show origin
+ * remote origin
+ :
+ :
+    refs/remotes/origin/hoge-branch        stale (use 'git remote prune' to remove)
+    refs/remotes/origin/fuga-branch        stale (use 'git remote prune' to remove)
+ :
+#+END_SRC
+この中で =stale (use 'git remote prune' to remove)= とあるのがいらないブランチだ。
+stale(腐った)をplue(切り詰める)すれば良い。
+
+まず、確認。
+#+BEGIN_SRC sh
+$ git remote prune origin --dry-run
+Pruning origin
+URL: gitolite@db72-dictwiki:wsrch
+ * [would prune] origin/hoge-branch
+ * [would prune] origin/fuga-branch
+#+END_SRC
+
+実行。
+#+BEGIN_SRC sh
+$ git remote prune origin
+#+END_SRC
+
+もう一回確認。なにも表示されなければ多分成功している。
+#+BEGIN_SRC sh
+$ git remote prune origin --dry-run
+#+END_SRC

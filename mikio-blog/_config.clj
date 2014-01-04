@@ -19,7 +19,7 @@
  :lang "en"
 
  :site {:site-title    "Misaki orgmode"
-        :site-subtitle "Misaki orgmode is static blog generator for org-mode based on Misaki."
+        :site-subtitle "人生パクリパクラレ。技術もパクリパクラレ。知られざる我が魂。" 
         :your-domain   "mikio.github.io"
         :atom          "atom.xml"
         :atom-base     "http://localhost:8080"
