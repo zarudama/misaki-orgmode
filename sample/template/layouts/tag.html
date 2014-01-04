@@ -9,7 +9,7 @@
   </headr>
   <div class="content">
     <ul>
-      @(for posts)
+      @(for tag-posts)
       <li><a href="$(url)">$(date-format date "yyyy MMM dd") - $(title)</a></li>
       @(end)
     </ul>
