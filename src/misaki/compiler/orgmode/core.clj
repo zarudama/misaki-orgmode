@@ -152,7 +152,7 @@
   (let [site (:site *config*)
         date (now)
         with-tag? (not (nil? tag-name))
-        all-posts (if-not ignore-post? (if with-tag? (get-tagged-post-data tag-name) (get-post-data :all? true)))
+        all-posts (if-not ignore-post? (get-post-data :all? true))
         all-posts (reverse (sort-by :date all-posts))
         posts (mskcfg/get-page-posts all-posts)
         ]
@@ -165,6 +165,7 @@
             :all-posts all-posts
             :all-tags  (get-tags :count-by-name? true)
             :recent-posts (take (:recent-posts-num *config*) all-posts)
+            :tag-posts (if-not ignore-post? (if with-tag? (get-tagged-post-data tag-name)))
             :tag-name  tag-name
             :archives  (make-arichves all-posts) 
             :date-xml-schema (date->xml-schema date)
