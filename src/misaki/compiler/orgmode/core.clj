@@ -28,6 +28,15 @@
     (str-contains? (.getAbsolutePath file) layout-dir)
     false))
 
+(defn- string->date
+  "Convert String to org.joda.time.DateTime."
+  [#^String date-string]
+  {:pre [(string? date-string)]}
+  (let [date-seq (nfirst (re-seq #"(\d{4})[-/](\d{1,2})[-/](\d{1,2})$" date-string))]
+    (if (and date-seq (= 3 (count date-seq))
+             (every? #(re-matches #"^[0-9]+$" %) date-seq))
+      (apply date-time (map #(Integer/parseInt %) date-seq)))))
+
 (defn- org-extension->html-extension
   "Convert orgmode extension(*.org) to html extension(*.html)."
   [s]
@@ -37,22 +46,24 @@
 
 (defn- make-post-output-filename
   "Make post output filename from java.io.File."
-  [#^File file post-date]
+  [#^File file option]
   {:pre [(file? file)]}
   (let [filename (.getName file)
-        output-name (render (:post-filename-format *config*)
-                            {:year     (year post-date)
-                             :month    (month post-date)
-                             :day      (day post-date)
-                             :filename filename})]
-    output-name
-    ))
+        option-filename (:filename option)
+        post-date   (string->date (:date option)) 
+        config-filename (render (:post-filename-format *config*)
+                                {:year     (year post-date)
+                                 :month    (month post-date)
+                                 :day      (day post-date)
+                                 :filename filename})
+        output-name (if option-filename option-filename config-filename)]
+    output-name))
 
 (defn make-post-output-url
   "Make output url from java.io.File."
-  [#^File file post-date]
+  [#^File file option]
   {:pre [(file? file)]}
-  (path (:url-base *config*) (make-post-output-filename file post-date)))
+  (path (:url-base *config*) (make-post-output-filename file option)))
 
 (def ^{:private true} make-url
   "Make output url from java.io.File."
@@ -77,15 +88,6 @@
    (string? file)     (load-file (path *base-dir* file))
    (sequential? file) (doseq [f file] (load-extension-files f))))
 
-(defn- string->date
-  "Convert String to org.joda.time.DateTime."
-  [#^String date-string]
-  {:pre [(string? date-string)]}
-  (let [date-seq (nfirst (re-seq #"(\d{4})[-/](\d{1,2})[-/](\d{1,2})$" date-string))]
-    (if (and date-seq (= 3 (count date-seq))
-             (every? #(re-matches #"^[0-9]+$" %) date-seq))
-      (apply date-time (map #(Integer/parseInt %) date-seq)))))
-
 (defn get-post-data
   "Get posts data."
   [& {:keys [all?] :or {all? false}}]
@@ -96,11 +98,10 @@
             (assoc option 
               :file %
               :date date
-              :date-hoge date
               ;; :content (render-template % (merge (:site *config*) site)
               ;;                           :allow-layout? false
               ;;                           :skip-runtime-exception? true)
-              :url (make-post-url % date)))
+              :url (make-post-url % option)))
          (msk/get-post-files :sort? false :all? all?))))
 
 (defn get-all-tags
@@ -225,7 +226,7 @@
        (when (= :single (:-compiling config))
          (if prev (msk/compile* {:-compiling :neighbor} (:file prev)))
          (if next (msk/compile* {:-compiling :neighbor} (:file next))))
-       {:status true, :filename (make-post-filename file post-date)
+       {:status true, :filename (make-post-filename file option)
         :body res})
 
      ;; other templates

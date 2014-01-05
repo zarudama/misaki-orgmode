@@ -1,0 +1,14 @@
+# @layout post
+# @title Difference with Misaki
+# @date 2050-12-1 
+# @tag tag3
+
+There are some specifications changes.
+
+- article options
+ - @output :: The output file name of the html file which excluded root. I can change an output file name forcibly by appointing this.
+ - @date :: In the Misaki, (time when I compiled it) is set now on the date and time, but, in Misaki-orgomode, it is the date of the article.
+- =*site*= variable
+ - :post-sort-type :date-desc :: support only the descending order of the date of the article for the moment.
+ - date :: Because I introduced the =@date= of the article option, originally I was not able to use the meaning (the date and time) of the date which there was.
+ - now-date ::  access it with this variable now on a date.

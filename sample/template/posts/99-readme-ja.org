@@ -83,7 +83,7 @@ index.htmlにある記事一覧の表示数を変更するには =:posts-per-pag
  :post-filename-format "＄(year)/＄(month)/＄(day)_＄(filename)"
 #+END_EXAMPLE
 - =:post-filename-regexp= は、入力するorfファイルの正規表現です。特に理由のない限り変更する必要はありません。
-- =:post-filename-format= は、出力されるhtmlファイルのパターンです。 =*site*= 変数の内容を使っていろいろカスタムできます。
+- =:post-filename-format= は、出力されるhtmlファイルのパターンです。 
 
 ブログ記事以外のページを追加したい場合、下記のディレクトリに追加します(下記は、about.htmlを追加する場合)。
 #+BEGIN_SRC sh
@@ -113,14 +113,16 @@ misaki-orgmode/sample/template/about.html
 # &#64;title Edit templates
 # &#64;date 2014-1-1 
 # &#64;tags tag1 tag2 tag3
+# &#64;output hoge.html
 #+OPTIONS: toc:nil
 </pre>
 #+END_HTML
 
-- @layout :: このファイルのレイアウトとなるテンプレートを指定します。
-- @title :: 記事のタイトルを指定します。
-- @date :: 記事の日付を指定します。
-- @tags :: 記事のタグを指定します。
+- @layout :: 必須。このファイルのレイアウトとなるテンプレートを指定します。
+- @title :: 必須。記事のタイトルを指定します。
+- @date :: 必須。記事の日付を指定します。
+- @tags :: 必須。記事のタグを指定します。
+- @output :: 出力されるhtmlを強制的に変更したい場合に指定します。通常は必要ありません。
 - #+OPTIONS: :: もし目次が必要ならば、 =toc:t= 、を指定します。
 
 記事内で、後述する cuma テンプレートのにアクセスしたい場合は、下記のように =#+BEGIN_HTML= を使用します。
@@ -219,9 +221,9 @@ $(hello "world")
 いくつか仕様変更があります。
 
 - 記事オプション
- - @filename :: まだ未実装だが、これを指定することで、出力ファイル名を強制的に変更できるようにする予定
- - @date :: ファイル名のYYYY-MM-DDの縛りを無くす代わりに、このオプションが必要になった。
+ - @output :: $rootを外した、htmlファイルの出力ファイル名。これを指定することで、出力ファイル名を強制的に変更できます。
+ - @date :: 本家では、現在日時(コンパイルした時の時間)が設定されるが、Misaki-orgomodeでは、記事の日付になります。
 - =*site*= 変数
- - :post-sort-type :date-desc :: 今のところ記事の日付の降順しかサポートしていない。
- - date :: 記事オプションの =@date= を導入したため、もともとあった date の意味(現在日付) は使用できなくなった。
- - now-date :: 現在日付はこの変数でアクセスできる。
+ - :post-sort-type :date-desc :: 今のところ記事の日付の降順しかサポートしていません。
+ - date :: 記事オプションの =@date= を導入したため、もともとあった date の意味(現在日時) は使用できなくなりました。
+ - now-date :: 現在日付はこの変数でアクセスできます。

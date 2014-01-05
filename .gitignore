@@ -10,6 +10,7 @@ pom.xml
 .lein-plugins
 .lein-repl-history
 watcher.rb
+/sample/public/misaki-orgmode/*
 /sample/public/20*
 /sample/public/article/*
 /sample/public/page[0-9]*
