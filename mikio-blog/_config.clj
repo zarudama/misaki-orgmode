@@ -11,12 +11,11 @@
  ;;:post-filename-format "$(year)-$(month)/$(filename)"
  :post-filename-format "article/$(year)/$(month)/$(day)_$(filename)" ;; o-blog format
  :compile-with-post ["index.html" "archives.html" "atom.xml"]
- ;;:url-base "/misaki-orgmode/"
  :url-base "/"
- :posts-per-page 2
- :recent-posts-num 2
+ :posts-per-page 10
+ :recent-posts-num 5
  :emacs "/usr/local/bin/emacs"
- :lang "en"
+ :lang "ja"
 
  :site {:site-title    "Misaki orgmode"
         :site-subtitle "人生パクリパクラレ。技術もパクリパクラレ。知られざる我が魂。" 
@@ -24,7 +23,7 @@
         :atom          "atom.xml"
         :atom-base     "http://localhost:8080"
         :twitter-id    "mikio_kun"
-        :disqus-id     "foomikiokunblog"
+        :disqus-id     "mikiokunblog"
         :local {:css   ["css/main.css"]
                 :js    ["js/highlight.pack.js"
                         "js/main.js"]}

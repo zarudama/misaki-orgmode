@@ -1,7 +1,7 @@
 # @layout post
 # @title firefox の同期不具合
 # @date 2013-5-3 
-# @tags firefox
+# @tag firefox
 
 下記のエラーが頻繁に表示される。
 #+BEGIN_EXAMPLE

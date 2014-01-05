@@ -3,22 +3,12 @@
 ; @orgmode? false
 <br/>
 <p>
-  misaki-orgmode is one of <a href="https://github.com/liquidz/misaki">Misaki</a>'s compiler plugin.</p>
-<p>
-  This compiler allows you to use <a href="http://orgmode.org">Org mode</a> and <a href="https://github.com/liquidz/cuma">cuma templates</a> instead of S-exp templates.
 </p>
 
-<h2>Table of contents</h2>
-<ul>
-@(for all-posts)
-<li><a href="$(url)">$(title)</a></li>
-@(end)
-</ul>
-
-<h2>Pagination sample</h2>
+<h2>記事一覧</h2>
 <ul>
 @(for posts)
-<li><a href="$(url)">$(date-format date "yyyy MMM dd") - $(title)</a></li>
+<li><a href="$(url)">$(date-format date "yyyy/MMM/dd") - $(title)</a></li>
 @(end)
 </ul>
 @(if prev-page)

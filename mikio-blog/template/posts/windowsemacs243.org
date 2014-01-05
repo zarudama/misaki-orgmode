@@ -1,7 +1,7 @@
 # @layout post
 # @title windows版emacs24.3で画像を表示する。
 # @date 2013-5-3 
-# @tags emacs windows
+# @tag emacs windows
 Windows版Emacsにおいて、image-diredなどで画像が表示されない場合、下記の方法で表示できる。
 -  =F1 v dynamic-library-alist= で必要なdllを調べる。
 - 表示されたdllをググッてダウンロードする。

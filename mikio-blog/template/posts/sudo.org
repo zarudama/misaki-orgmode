@@ -1,7 +1,7 @@
 # @layout post
 # @title sudoで環境変数を引き継ぎたい
 # @date 2012-03-10
-# @tags linux
+# @tag linux
 sudo でコマンドを実行する際、今現在のログインアカウントの環境変数を引き継いで実行したい。
 
 * 方法

@@ -1,0 +1,16 @@
+# @layout post
+# @title eshell上でリダイレクトした結果が文字化け
+# @date 2012-12-30
+# @tag emacs hamari
+
+#+BEGIN_SRC sh
+$ git diff > hoge.patch
+#+END_SRC
+hoge.patchを開くと下記のような制御コードのまじった結果になりpatchとして使用できない。
+#+BEGIN_SRC sh
+^[[0m^[[01;32march^[[0m      ^[[01;32mcut^[[0m                   ^[[01;32mdoexec^[[0m      ^[[01;32mgettext^[[0m   ^[[01;36mksh^[[0m
+#+END_SRC
+るびきちさんのメルマガ第3号に紹介されていたesh-myparser.elを使って以下のコマンドでおっけー。
+#+BEGIN_SRC sh
+$ b git diff > hoge.patch
+#+END_SRC

@@ -1,7 +1,7 @@
 # @layout post
 # @title ubuntuでxmonadして、emacsでProcessingしてます
 # @date 2013-08-07
-# @tags emacs processing ubuntu xmonad
+# @tag emacs processing ubuntu xmonad
 
 最近Processingをいじり始めました。
 

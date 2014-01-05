@@ -20,7 +20,7 @@
 (setq org-src-fontify-natively t)
 (setq org-export-headline-levels 2)
 
-(setq org-export-default-language "en")
+(setq org-export-default-language "ja")
 (setq org-export-html-coding-system 'utf-8)
 (setq org-export-with-fixed-width nil)
 ;;; no use "^" and "_"

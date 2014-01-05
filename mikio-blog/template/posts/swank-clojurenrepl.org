@@ -1,7 +1,7 @@
 # @layout post
 # @title swank-clojureの後継モジュールのnREPLを試してみた
 # @date 2012-9-7 
-# @tags clojure nrepl
+# @tag clojure nrepl
 
 いつのまにかswank-clojureが非推奨になり、代わりにnREPLというものが推奨されていた。
 - https://github.com/technomancy/swank-clojure

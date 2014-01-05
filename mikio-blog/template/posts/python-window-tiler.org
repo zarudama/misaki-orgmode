@@ -1,7 +1,7 @@
 # @layout post
 # @title python window tiler を試す 
 # @date 2013-1-29 
-# @tags windows xmonad
+# @tag windows xmonad
 
 [[http://www.lifehacker.jp/2013/01/130120mykids_command_line.html][この記事]] にxmonadがでてきたので、自分が普段使っているWindowsでもタイル
 型マネージャを使いたくなった。実は以前にも何度か試したことがあったが、

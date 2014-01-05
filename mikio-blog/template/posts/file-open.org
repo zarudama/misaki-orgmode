@@ -1,7 +1,7 @@
 # @layout post
 # @title ファイルオープン数が上限値に達した
 # @date 2013-3-2 
-# @tags linux
+# @tag linux
 CentOSで"too many files"なるエラーが多発したのでその対応策をメモしておく。
 
 下記に対処方法方法がある。

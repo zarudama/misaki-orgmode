@@ -1,0 +1,95 @@
+# @layout post
+# @title xmonadを試す
+# @date 2012-9-28 
+# @tag ubuntu xmonad
+
+CUIでtmuxを操作してるときの一覧できる快適さをGUIに求めた結果、
+自宅のUbuntuにXmonadをいれてみました。
+
+- http://gihyo.jp/admin/serial/01/ubuntu-recipe/0124
+
+タイル型のウィンドウマネージャです。常にウィンドウ全てが一覧されるやつです。
+インストールしてみて実感しましたがタイル型はとーっても快適です。
+普段からemacsでキーボード操作メインのユーザだったらすぐに気にいるかと思います。
+とくにウィンドウ切り替えが =Mod+j/k= でできるのがイイ!
+(それに比べて WindowsのALT+tabは左手の手首が死ぬ。。。)
+
+今回、Xmonadというのをインストールしましたが、老舗のawesomeというのも人気があるそうです。
+ただXmonadの方が後発である分いろいろブラッシュアップされてるような印象でした。
+問題は設定ファイルがHaskellってことですかね。できれば覚えたくないですよね。
+いやHaskellは勉強して動かしたことはありますが、
+今はLisp系言語を覚え中なので他の言語はできるだけ気にせず脳の負担を増やしたくないのです。
+そういう意味で気になるのは、設定フィアルがCommonLispであるstumpwm。そのうち試したいと思います。
+
+しかしタイル型使ってると、UnityとかgnomuShellの動向がどうでもよくなりますな。
+
+* インストールメモ
+#+BEGIN_SRC sh
+$ sudo apt-get install xmonad
+$ sudo apt-get install dmenu  # キーボードランチャー
+$ sudo apt-get install xmobar # ステータスバー
+#+END_SRC
+
+xmorbar用の設定ファイル( =~/.xmobarrc= )を作成する。
+#+BEGIN_SRC haskell
+-- -*- mode:haskell -*-
+Config { font = "xft:Sans-9:bold"
+       , bgColor = "black"
+       , fgColor = "grey"
+       , position = Top
+       , lowerOnStart = False
+       , commands = [ Run Network "eth0" ["-L","0","-H","32","--normal","green","--high","red"] 10
+                    , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run Swap [] 10
+                    , Run Battery [] 600
+                    , Run Com "lsb_release" ["-s","-d"] "" 36000
+                    , Run Date "%Y %b %_d(%a) %H:%M:%S" "date" 10
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "<fc=#ee9a00>%lsb_release%</fc> | %cpu% | %memory% %swap% | %eth0% | %battery% }{ %date%"
+       }
+#+END_SRC
+
+ =~/.xmonad/xmonad.hs= を作成する。
+#+BEGIN_SRC haskell
+import XMonad
+import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageDocks
+import XMonad.Util.Run(spawnPipe)
+import XMonad.Util.EZConfig(additionalKeys)
+import System.IO
+
+main = do
+        xmproc <- spawnPipe "/usr/bin/xmobar /home/mikio/.xmobarrc"  -- .xmoabrrcのパスを記述しておく
+        xmonad $ defaultConfig
+             { manageHook = manageDocks <+> manageHook defaultConfig
+             , layoutHook = avoidStruts  $  layoutHook defaultConfig
+             , logHook = dynamicLogWithPP $ xmobarPP
+             { ppOutput = hPutStrLn xmproc
+             , ppTitle = xmobarColor "green" "" . shorten 50
+              }
+             , modMask = mod4Mask     -- WindowsキーをModキーとしてバインドする
+          } `additionalKeys`
+          [ ((mod4Mask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
+          , ((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
+          , ((0, xK_Print), spawn "scrot")
+          ]
+#+END_SRC
+
+最低限のコマンド
+| Mod-S-q   | ログアウト               |
+| Mod-S-c   | ウィンドウクローズ       |
+| Mod-S-RET | 端末起動                 |
+| Mod-p     | キーワードランチャー起動 |
+| Mod-q     | 設定ファイルの再読込     |
+* xinitrc
+xmodmapの設定とdropboxの読み込みを設定しています。
+#+BEGIN_SRC sh
+(sleep 3; xmodmap ~/.xmodmap) &
+~/.dropbox-dist/dropboxd &
+exec xmonad
+#+END_SRC
+* 参考サイト
+- http://d.hatena.ne.jp/uhiaha888/20110113/1294885816

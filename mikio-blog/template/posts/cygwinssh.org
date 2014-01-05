@@ -1,7 +1,7 @@
 # @layout post
 # @title cygwinでssh接続できない 
 # @date 2012-12-22
-# @tags cygwin ssh
+# @tag cygwin ssh
 
  =/home/mikio= にホームを設定してるのではなく、 =c:/Users/mikio= にHOMEを設定し
 てる場合でssh接続すると、下記のように =/home/mikio= ディレクトリが作成でき

@@ -1,7 +1,7 @@
 # @layout post
 # @title Emacs中毒者に贈るJDEEによるJava開発環境の構築
 # @date 2012-12-23
-# @tags jdee emacs java
+# @tag jdee emacs java
 #+OPTIONS: toc:t
 
 この投稿は [[http://qiita.com/advent-calendar/2012/emacs][Emacs Advent Calendar 2012]] の23日目の記事です。 
@@ -212,7 +212,7 @@ $ git clone https://github.com/mikio/sample-java-project.git
 続いてもろもろの動作確認をしていきます。
  =<PROJECT-ROOT>/src/sample/java/project/SampleJavaProject.java= を開いてください。
 
-* BeanShell
+** BeanShell
 おもむろに、 =C-c C-v C-k= でBeanShellを起動します。
 まれにJavaファイルを開いてもJde-modeにならないことがあります。
 原因はわからないのですが、もしキーバインドが効かなかった場合は、
@@ -237,7 +237,7 @@ C:\Program Files\Java\jdk1.7.0_09
 このBeanShellを再起動すれば( =M-x jde-bsh-exit= でBeanShellを終了できる)治ることがあります。
 この辺はSLIMEに似てますね。
 
-* 依存ライブラリのダウンロード
+** 依存ライブラリのダウンロード
 続いてプロジェクトに必要なjarをリポジトリからローカルにもってきます。
 通常は、下記のようにコマンドラインから入力しますが、これをJDEEから操作してみましょう。
 #+BEGIN_SRC sh
@@ -266,7 +266,7 @@ drwxr-xr-x+ 1 mikio None       0 Nov 28 23:04 ..
 -rwxr-xr-x  1 mikio None  108874 Nov 16  2006 xom-1.0.jar
 #+END_SRC
 
-* ビルドエラー
+** ビルドエラー
 つぎにビルドに失敗してエラー表示された時の挙動を試してみましょう。
 まず、わざとビルドを失敗させるために、ソース冒頭のimport文を全て削除します。
 次に、 =C-c C-v C-b RET= でビルドしてみてください。
@@ -276,7 +276,7 @@ drwxr-xr-x+ 1 mikio None       0 Nov 28 23:04 ..
 
 [[file:/img/jdee/ant-error.png]]
 
-* importの自動挿入とビルド
+** importの自動挿入とビルド
 import文を自動挿入するには、 =C-c C-v z= してください。
 通常は、JDEEが自動で必要なクラスをどばっと挿入してくれます。
 ただし今回の場合は、候補が複数あるのでCUIによる選択画面が表示されます。
@@ -290,7 +290,7 @@ import文の挿入が成功したら =C-c C-v C-b= でビルドプロンプト�
 何もターゲットを入力せずにエンターしてください。
 今度はビルドが成功するはずです。
 
-* APIドキュメントの参照
+** APIドキュメントの参照
 カーソルをStringのところに合わせて =C-c C-v C-w= してください。
 StringクラスのJavadocがブラウザ上に開きます。
 emacserなら当然w3mですよね？ローカルにダウンロードしたAPIを指定すると更に快適です。
@@ -300,7 +300,7 @@ emacserなら当然w3mですよね？ローカルにダウンロードしたAPI�
 # **** javaDocコメントの挿入
 #  =C-c C-v j= でJavaDocのコメントが挿入されます。
 
-* メソッド補完
+** メソッド補完
  =C-c C-v .= でメソッドの補完ができます。
  =options.= とピリオドまで打ったところで =C-c C-v .= します。 
 
@@ -312,7 +312,7 @@ emacserなら当然w3mですよね？ローカルにダウンロードしたAPI�
 選んだメソッドを入力できます。これはこれで感動ものですが[fn:2] 
 ・・・とっても使いづらいですね。でも安心してください。helm版を作りました。
 
-* メソッド補完(Helm版)
+** メソッド補完(Helm版)
 ミニバッファでメソッドを補完する機能は確かに便利ですが、
 今となってはこのインターフェイスは古くさいですね。
 そこでこの機能をHelmで実現してみました。

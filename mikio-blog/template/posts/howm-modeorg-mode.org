@@ -1,7 +1,7 @@
 # @layout post
 # @title howm-modeとorg-modeを同時に使ってみたい。
 # @date 2012-9-28 
-# @tags emacs
+# @tag emacs
 
 しばらくメモ管理は、org-modeのみで運用してきた。
 ブログの下書きも blog.orgという1ファイルのみで運用している

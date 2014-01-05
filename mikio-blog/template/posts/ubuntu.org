@@ -1,0 +1,360 @@
+# @layout post
+# @title (超個人的)Ubuntuインストール後にやることまとめ
+# @date 2012-5-5 
+# @tag ubuntu
+#+OPTIONS: toc:t
+
+Ubuntu12.04LTS版です。
+
+* 最初にやること
+** ホーム配下のディレクトリリネーム
+ホーム配下のディレクトリが日本語になっているので早々に英語化する。
+#+begin_src sh
+LANG=C xdg-user-dirs-gtk-update
+#+end_src
+** update
+最初は、メニューがところどころ日本語になっていなかったりする。
+なにはともあれアップデートマネージャで最新にアップデートする。
+
+** 端末の設定
+- [Windwoskキー] -> [gnome-terminal]
+- [メニュー] -> [編集] -> [キーボードショートカット] 
+- すべてチェックを外しておく
+* IME起動ショートカットの変更
+- [右上のパネル（キーボード）] -> [設定] -> [一般] タブ
+- [キーボードショットカット] -> [切り替え] 
+- [Zenkaku_Hankaku]だけにする
+
+* xmodmapによるキーマッピング
+下記を参考にした。
+http://d.hatena.ne.jp/kenbeese/20120214/title
+
+~/.Xmodmapを作成する。
+#+begin_src sh
+keycode 102 = Control_L
+keycode 100 = Control_L
+keycode 101 = Shift_L
+
+
+keycode  66 = Control_L NoSymbol Control_L
+clear Lock
+
+add Control = Control_L
+#+end_src
+
+反映
+#+begin_src sh
+xmodmap ~/.xmodmap
+#+end_src
+
+これにより下記の割り当てになる。
+#+begin_src sh
+無変換(102)→ctrl
+変換(keycode 100)→ctrl
+カタカナひらがな(101)→shift
+#+end_src
+
+
+更に起動時に自動的に有効になるように、 =~/xinitrc= を準備する。
+下記を記述する。
+#+BEGIN_SRC sh
+xmodmap ~/.~Xmodmap
+#+END_SRC
+
+もし割り当てを変更したいときは、xevコマンドを使ってキーコードを
+調べ、 =~/.xmomap= を変更すれば良い。
+#+BEGIN_SRC sh
+$ xev
+#+END_SRC
+CapsLock(66,Eisu_toggle)  = 左Ctrl(Control_L)
+Win(133,Super_L) = 左Ctrl
+左ALT(64, ALT_L) = Win
+無変換(102, Muhenkan)) = 左ALT
+変換(100,Henkan_Mode) = 右CTRL
+変換(101,Hiragana_Katakana) = 右シフト
+
+* Dropbox
+これがないとはじまらない。dropboxのサイトへいき、.debをダウンロードしてパッケージをインストールする。
+* firefox
+syncの設定して、keysnailを入れる。
+
+* Mig 1M 
+1MのMはMonoSpaceのM。つまり等幅フォントということ。
+下記から「Mig 1M」フォントをダウンロードする。
+- http://mix-mplus-ipa.sourceforge.jp/download.html
+あとは下記のコマンドで使えるようになる。
+#+begin_src sh
+mkdir ~/.fonts 
+cp migu-1m-20120411.zip ~/.fonts
+cd ~/.fonts 
+unzip migu-1m-20120411.zip
+fc-cache -fv
+#+end_src
+
+* VLゴシック
+下記をfirefoxから開けばOK
+- http://apt.ubuntu.com/p/ttf-vlgothic
+
+インストールしたフォントを使用するには、Advanced Settingsを
+ソフトウェアセンターからインストールする必要がある(gnome-tweak-toolで検索する)。
+
+Advanced Settingsをインストールすると、Launcherに「高度な設定」アイコンがあるのでこれを起動し、
+フォントを選択すればよい。
+
+* 全体のキーボード操作をemacs系にする
+ターミナルで下記コマンドを実行する。
+#+begin_src sh
+sudo apt-get install dconf-tools
+gsettings get org.gnome.desktop.interface gtk-key-theme Emacs
+#+end_src
+
+手動の場合は以下。
+#+begin_src sh
+dconf-editor
+#+end_src
+
+以下のパスで
+#+begin_src sh
+/org/gnome/desktop/interface/gtk-key-theme
+#+end_src
+値をEmacsにする。Eは大文字なので注意すること。もどすときはDefaultにする。
+
+* paco
+- http://paco.sourceforge.net/
+- http://d.hatena.ne.jp/rx7/20081011/p2
+
+pacoは、make install によってインストールされたアプリケーションのパッ
+ケージ管理をしてくれる。
+
+#+begin_src sh
+# ソースは適当にWebからダウンロード
+sudo apt-get install libgtkmm-2.4-dev
+cd ~/src/paco-2.0.9/
+./configure
+make
+sudo make install
+sudo make logme
+#+end_src
+
+* emacs
+ソースは最新版(ver24)を取ってくる。build-depは多分emacs23でOK。
+#+begin_src sh
+# ソースは適当にWebからダウンロード。「emacs24」とかで検索。
+sudo apt-get build-dep emacs23
+cd ~/src/emacs-24/
+
+# configureで画像関連でエラーになるかも。そのときは
+# sudo apt-get install libgif-dev ligtiff-dev libxpm-dev
+
+./configure
+make
+sudo paco -D make install
+#+end_src
+ついでにw3mも入れとく。
+#+begin_src sh
+sudo apt-get install w3m
+#+end_src
+
+* cmigemo
+Kaoriaからソースを取得する。
+#+begin_src sh
+wget http://cmigemo.googlecode.com/files/cmigemo-default-src-20110227.zip
+unzip cmigemo-default-src-20110227.zip
+cd cmigemo-default-src-20110227
+#+end_src
+
+そのままコンパイルするとエラーがでるので修正する。
+#+begin_src sh
+src/wordbuf.c:118: error: ‘INT_MAX’ undeclared (first use in this function)
+src/wordbuf.c:118: error: (Each undeclared identifier is reported only once
+src/wordbuf.c:118: error: for each function it appears in.)
+#+end_src
+wordbuf.cに下記を追加する。
+#+begin_src sh
+#include <limits.h>
+#+end_src
+
+あとは下記のとおり。
+#+begin_src sh
+sudo apt-get install curl
+sudo apt-get install nkf
+
+cd ~/src/cmigemo-default-src/
+sh ./configure 
+make gcc
+cd dict
+make utf-8
+cd ..
+sudo paco -D make gcc-install
+#+end_src
+
+次のようにテストできる。
+#+begin_src sh
+$ cmigemo -d /usr/local/share/migemo/utf-8/migemo-dict
+migemo_open("/usr/local/share/migemo/utf-8/migemo-dict")=0xf54010
+clock()=0.300000
+QUERY: kyassyu
+PATTERN: (ｷｬｯｼｭ|キャッシュ|きゃっしゅ|ｋｙａｓｓｙｕ|kyassyu)
+#+end_src
+
+* git
+#+BEGIN_SRC sh
+sudo apt-get install git
+git config --global alias.st "status"
+git config --global alias.ci "commit"
+git config --global alias.br "branch"
+git config --global alias.co "checkout"
+git config --global color.ui "auto"
+git config --global core.pager "cat"
+git config --global user.email "hoge@faga.com"
+git config --global user.name "hoge"
+#+END_SRC
+
+* skk(uim)
+ubuntuは、標準でiBusを使用しているが、ibus-sskは
+変換時にemacsのキーバインドが使えないので、
+変わりにuimというインプットメソッドがあるので入れてみる。
+- http://ubuntu-note.blog.so-net.ne.jp/2010-10-17-1
+
+#+begin_src sh
+sudo apt-get install uim uim-skk
+#+end_src
+
+- 設定　言語サポート　「キーボードに使うIMシステム」
+- uimを選択
+その後ログアウトすれば使用できるようになる。
+- Dashでuimを入力すると設定画面が表示される
+- ツールバーは表示できない。
+
+emacsと重複するため、SKKの起動キーを変更する。
+- [設定] -> [SKKキー設定1] 
+- Zenkaku_Hankakuだけにする
+
+* jdk
+下記よりjdk最新版を取得する。
+- http://www.oracle.com/technetwork/java/javase/downloads/index.html
+
+CUIから最新版をダウンロードする場合。
+#+BEGIN_SRC sh
+wget --no-cookies --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com" -O jdk-6u41-linux-i586.bin 'http://download.oracle.com/otn-pub/java/jdk/6u41-b02/jdk-6u41-linux-i586.bin'
+#+END_SRC
+
+解凍したディレクトリを移動する。
+#+begin_src sh
+sudo mkdir /usr/lib/jvm/
+sudo mv ./jdk1.7.0_04/ /usr/lib/jvm/jdk1.7.0
+#+end_src
+
+下記でインストールする。
+#+begin_src sh
+sudo update-alternatives --install "/usr/bin/java" "java" "/usr/lib/jvm/jdk1.7.0/bin/java" 1
+sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/lib/jvm/jdk1.7.0/bin/javac" 1
+sudo update-alternatives --install "/usr/bin/javap" "javap" "/usr/lib/jvm/jdk1.7.0/bin/javap" 1
+sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/lib/jvm/jdk1.7.0/bin/javaws" 1
+#+end_src
+
+複数のjavaがあれば、下記でデフォルトにするコマンドを選択する。
+今回はoracleJavaのみなので必要ない。
+#+begin_src sh
+sudo update-alternatives --config java
+#+end_src
+
+下記で確認する。
+#+begin_src sh
+java -version
+javac
+javap
+javaws
+#+end_src
+
+** 参考
+- http://radi0ant.hatenablog.com/entry/2011/12/29/015013
+- http://askubuntu.com/questions/55848/how-do-i-install-oracle-java-jdk-7
+
+* lein(clojure)
+binディレクトリを作成する。
+#+begin_src sh
+$ cd ~
+$ mkdir bin
+$ vi .bashrch
+# 下記を追加
+export PATH=~/bin
+#+end_src
+
+leinをインストールする。
+#+begin_src sh
+cd ~/bin
+wget https://raw.github.com/technomancy/leiningen/stable/bin/lein
+chmod +x lein
+./elin repl # ダウンロード後、repl開始
+#+end_src
+
+* eclipse
+- http://gihyo.jp/admin/serial/01/ubuntu-recipe/0167
+
+ソフトウェアセンターから「eclipse」」とpleiadesをインストールする。
+その後、/etc/eclipse.iniを編集する。
+#+begin_src sh
+-javaagent:/usr/lib/eclipse/plugins/jp.sourceforge.mergedoc.pleiades/pleiades.jar
+#+end_src
+この時、eclipse.iniのそれぞれのパラメータの改行位置がおかしいことがあるので、その時は適切に編集する。
+編集が終ったら、Dashメニューより起動して日本語化されていることを確認す
+る。
+
+* その他
+** DVDについて
+DVDをみるためには以下のインストールが必要。
+#+BEGIN_SRC sh
+$ sudo apt-get install ubuntu-restricted-extras
+$ sudo sh /usr/share/doc/libdvdread4/install-css.sh
+#+END_SRC
+- iso マウントには Frius ISO mount
+- dvd バックアップには、k9 copy
+
+** vmwareなどでインストールしたときにlocaleに日本語がない場合
+#+begin_src sh
+sudo apt-get install language-pack-ja
+sudo dpkg-reconfigure locales
+#+end_src
+
+** クリップボード履歴
+#+begin_src sh
+sudo apt-get install parcellite
+#+end_src
+
+** スクリーンショット
+Ubuntuでは標準でスクリーンショットがあって、PrintScrキーを押下するだけでアクティブウィンドウが
+png形式でキャプチャされる。
+けれども、この場合、クライアント領域だけのキャプチャになるので用途によっては不便である。
+その編の問題を解決してくれるソフトがShutterである
+#+begin_src sh
+sudo apt-get install shutter
+#+end_src
+
+http://ankyo.blog.so-net.ne.jp/2011-04-07
+
+* 日本語IMEについて
+Linuxは、日本語入力には３つのソフトウェアが必要。
+- 日本の文字を入力するためのシステムであるインプットメソッド
+- かな漢字の変換をするシステム
+- 両者をつなぐ日本語ブリッジ
+
+- インプットメソッドの例
+ - SCIM
+ - iBus
+ - uim
+
+- かな漢字変換システムの例
+ - Anthy
+ - MOZC
+ - SKK
+
+- 日本語ブリッジの例
+ - ibus-mozc
+ - uim-skk
+ - scim-anthy
+
+最近のUbuntuでは、インプットメソッドに、iBus,
+かな漢字変換システムには、Anthyを使用している。
+
+

@@ -1,7 +1,7 @@
 # @layout post
 # @title puttyをやめて、cygwin Terminalにする
 # @date 2012-8-27 
-# @tags cygwin ssh
+# @tag cygwin ssh
 
 puttyベースのminntyがいつのまにcygwinに完全統合されて、 =Cygwin
 Terminal= というアプリになっていたので「putty + pagent」の組み合わせを

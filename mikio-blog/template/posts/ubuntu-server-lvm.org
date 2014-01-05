@@ -1,7 +1,7 @@
 # @layout post
 # @title Ubuntu Server インストール時に前回作ったLVMが削除できなかった。
 # @date 2012-12-30 
-# @tags ubuntu hamari
+# @tag ubuntu hamari
 
 Ubuntu Serverをインストールし直したとき、前回作ったLVMを再構成しようとしたら
 VGやLVMが削除できなくて先に進めなくなった。

@@ -1,7 +1,7 @@
 # @layout post
 # @title .emacsに必要なpackage を指定して自動で各種elispをインストールする
 # @date 2013-01-06 
-# @tags emacs
+# @tag emacs
 
 今までパッケージ管理には =el-get= を使用してきたのですが、
 Windows環境がメインだと =git clone= がうまくいかなかったり、

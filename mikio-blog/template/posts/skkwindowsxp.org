@@ -1,7 +1,7 @@
 # @layout post
 # @title SKKを導入してみる(WindowsXP)
 # @date 2012-03-09
-# @tags windows skk
+# @tag windows skk
 #+OPTIONS: toc:t
 
 去年からemacs上の日本語入力にはDDSKKを使い続けているのですが、

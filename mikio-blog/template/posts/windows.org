@@ -1,0 +1,155 @@
+# @layout post
+# @title (超個人的)Windowsインストール後にやることまとめ
+# @date 2011-4-28 
+# @tag windows
+#+OPTIONS: toc:t
+* ソフトのインストールポリシー
+- インストーラのないツールは基本的に%HOME%/apps下に展開する。
+- インストーラものはデフォルト値でインストール
+- %HOME%/shortcutsにショートカットをおいてlauncyで管理
+- UNIX系(コマンドライン系)のミドルウェアでインストーラーがない場合は%HOME&/opt/下に展開する。
+
+* コントロールキーの設定
+*** xp
+- xkeyemacsをつかってcapsキーをctrsキーにする。
+*** win7
+- Changekeyを使用する(右クリメニューで管理者として実行すること)。
+ - chgkey.exe
+ - Dropboxに保存してある。
+- GUIのキーボードが表示されるので変更する
+ - Caps → Ctrl
+ - 無変換 → Ctrl
+ - 変換 → Ctrl
+ - ひらがな → Shift 
+- 再起動
+
+* Usersディレクトリの作成(XPのみ)
+「Link Shell Extension」をインストールして
+「c:\」に「C:\Documents and Settings」のディレクトリジャンクションを作り名前を「Users」とする。
+これにより
+c:\Users\というディレクトリができ、Windows7/Vistaと同じような構成になる。
+
+* 一番最初にインストール
+- Launcy
+- Firefox
+- Emacs
+- ExpLzh
+
+* 環境変数の設定
+- HOME
+ - XPの場合:HOME=c:\Users\mikio
+ - Windows7の場合:HOME=%USERPROFILE%
+
+ - HOMEはダブルクォーテーションで囲んではいけない。emacsが起動しなくなる。
+ - HOMEはcygwin,Emacs用、XYZZYHOMEはxyzzy用の環境変数。
+ - ※cygwinでは、HOMEを設定すると、自動的に/home/mikiがc:\mikiにマウントされる。
+
+- MAVEN_HOME
+ %HOME%\opt\
+- XYZZYHOME
+  - XYZZYHOME=%HOME%\aps\xyzzy
+  - PATH
+    c:\cygwin\bin;
+
+- 下記は.bashrc側に置くので設定しなくて良い。
+  JAVA_HOME=%HOME%\opt\
+  ANT_HOME=
+
+- PATH
+%PATH%;%HOME%\bin;%MAVEN_HOME%\bin;%HOME%\opt\php-5.3.8-Win32-VC9-x86
+- TERM
+  xternm(CYGWIN用)
+- CYGWIN
+  tty(screenのデタッチ用)
+* キーボードの入力速度を早める
+- (Win7) [コンパネ] -> [コンピュータの簡単操作] -> [キーボード動作の変更] -> [キーボードの設定]
+
+* アンチエイリアスの設定
+- MacTypeをインストールする。
+- fontは「Mig 1M」を使用する。MigMix1M 行間が広いので注意。
+
+* 入れるソフト
+** インストーラ系ソフトのインストール
+- Spybot Searcy & Directory
+- Link Shell Extension
+ - http://schinagl.priv.at/nt/hardlinkshellext/hardlinkshellext.html
+- AdujustClock
+- WinSCP
+- Jing
+- Chrome
+- Bullzip PDF Printer
+- Java JRE
+- MediaMonkey(音楽管理ソフト)
+- Switcher(MacのExpose)
+- JDK, JRE
+
+** 解凍系
+- cygwinのインストール
+
+- putty、ごった煮にさらに機能追加版
+ - http://ice.hotmint.com/putty/
+ ※オリジナルのごった煮版は、コマンドラインからのplinkがうまく使えなかったので使用しない。
+
+- Jane sytle
+- eclip
+- Eclipse
+- WinDeskWide(仮想デスクトップ)
+- TClock Light (for Windows XP)
+- tclocklight-kt100204(for WIndows7)
+  タスクバーを左たてに表示する場合、tclock.iniを書きに書きかえる。
+  Format="yy/mm/dd\nddd\nhh:nn:ss"
+- AdjustClock
+ windows7の場合、OSに自動同期機能があるのでいらない。
+
+** スタートアップの設定
+- タートアップフォルダの開き方
+ - [スタート] -> [すべてのプログラム] -> []
+ - スタートアップを右クリック - 開く
+下記を登録する。
+- tclock
+- eclip
+- pagent
+# - WinDeskWide
+# - AdjustClock
+# - Launchy
+
+* MySQL
+MySQLのHPにてCommunityServerをインストールする。
+HPの上の方にある大きなバナーのやつだと余計な製品がたくさん入って
+わけわからんので注意。
+
+* php
+- http://windows.php.net/download/#php-5.3-ts-VC9-x86
+windows版のバイナリ(*.zip)をダウンロードして展開する。
+- 展開場所の例
+#+begin_src sh
+$HOME/opt/php
+#+end_src
+
+* 別PCに移行する場合
+** ファイル共有の設定
+ - コンパネ　-　Windowsファイアウォール - 例外
+ - 「ファイルとプリンタの共有」をチェックする。
+** ローカルPCのAdminユーザのパスワードを設定
+ - コントロールパネル - ユーザアカウント
+ - Administratorを選択し、[パスワードのリセット]をクリックし、新しいパスワードを入力する。
+** 設定ファイルのコピー
+- エクスプローラを立ち上げ、旧端末のCドライブに接続する。
+ -- \\旧端末のコンピュータ名\C$
+- 旧端末の必要な情報をコピーする(FireCopyを使用する。)。
+ -- c:\miki
+** 移行用ソフト
+- FireFile Copy :高速ファイルツール。上書き確認とかいろいろ。エクスプローラだときつい。
+
+* Faithの自作マシンでのドライバインストール
+windows7を入れた最初の状態では、ネットワークアダプタのドライバがないため
+ネットにつながらない。
+そこで、ドライバをインストールする。ネットワークアダプター以外にも
+いくつかドライバがないものがあるのでついでにインストールしておく
+- ユニバーサルシリアルバスや
+
+- マザーボードのCD-ROMを用意する(P8Z68V-PRO)。
+- [コントロールパネル] - [ハードウェアとサウンド]-[デバイスマネージャ]
+- ほかのデバイスを選択し、びっくりマークのついている機器を右クリック
+- [ドライバーソフトウェアの更新]－[コンピュータを参照してドライバーソフトウェアを検索します]
+

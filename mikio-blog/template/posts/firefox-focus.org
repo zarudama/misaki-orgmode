@@ -1,7 +1,7 @@
 # @layout post
 # @title Firefoxでサイトを開いた時に自動フォーカスされるのを無効化する。
 # @date 2012-9-6 
-# @tags firefox
+# @tag firefox
 
 Twitter,google,その他多くの検索サイトでは、ページを開くと勝手にフォーカ
 スが移動して入力待ち状態になる。この挙動は多くの普通の人にとっては操作

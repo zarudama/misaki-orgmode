@@ -1,10 +1,17 @@
 /* =basic */
 body, h1, h2, h3, h4, p { margin: 0; padding: 0; }
-body, p { font-family: 'Josefin Sans', sans-serif; }
+body, p {
+    font-family: 'Josefin Sans', sans-serif; 
+    /* font-family: 'Hiragino Kaku Gothic ProN', Meiryo, 'VL ゴシック', 'MS PGothic', Sans-serif; */
+    line-height: 1.6em;
+}
 
 a { color: #4ea5e1; }
 a:hover { opacity: 0.5; }
 
+li {
+    margin: 0.5em;
+}
 blockquote { color: #888; font-style: italic; }
 blockquote p:before { content: '> '; }
 
@@ -56,10 +63,10 @@ h2 a { color: #000; text-decoration: none; }
 .column .w50per { width: 49%; }
 
 h2 { margin: 1em 0 0.5em; color: #444; font-weight: normal; font-size: 2.0em; }
-h2:first-letter { color: #93ca76; font-weight: bold; }
+h2:first-letter { color: HotPink; font-weight: bold; }
 
 h3 { margin: 1em 0 0.5em; color: #444; font-weight: normal; font-size: 1.5em; }
-h3:first-letter { color: #93ca76; font-weight: bold; }
+h3:first-letter { color: HotPink; font-weight: bold; }
 
 /* =container */
 .container { width: 940px; margin: 1em auto; }
@@ -74,15 +81,26 @@ hr + p {
 }
 
 /* article header style */
-.article-header { 
+.article-header {
     margin: 1em 0 1em 0;
-    border-bottom: 1px solid #eaeaea; 
-    overflow: hidden; 
-    font-size: 1.5em;
 }
-.article-header h1 { color: #444; font-weight: normal; float: left; }
-.article-header h1 span { color: #93ca76; font-weight: bold; }
-.article-header p.date { float: right; margin: 20px 10px 0 30px; font-weight: bold; letter-spacing: 1px; color: #444; }
+.article-header h1 {
+    padding: 0 0 0.5em 0;
+    margin: 0;
+    font-size: 2em;
+    color: #444;
+    font-weight: normal;
+    border-bottom: 1px solid #eaeaea; 
+/*    float:left; */
+    line-height: 1.2em;
+}
+/* .article-header p.date { margin: 20px 10px 0 30px; font-weight: bold; letter-spacing: 1px; color: #444; } */
+.article-header .date {
+    text-align:right;
+    padding: 0;
+    margin: 0;
+/*    float: right; */
+}
 .article-header h1 a {
     text-decoration: none;
     color: #444;
@@ -203,8 +221,10 @@ pre code {
 
 .figure {
     text-align: left;
-    margin-top: 1em;
-    margin-bottom: 3em;
+    margin: 1em;
+}
+.figure p {
+    font-size: 0.8em;
 }
 .figure img {
     border-width: 0px;
