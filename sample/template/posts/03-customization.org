@@ -24,7 +24,7 @@ You revise follows if You want to change the format of an output html file.
  :post-filename-regexp #"^(.+)$"
  :post-filename-format "＄(year)/＄(month)/＄(day)_＄(filename)"
 #+END_EXAMPLE
-- =:post-filename-regexp= is a naming rule of input postsFile.
+- =:post-filename-regexp= is a naming rule of input postsFile.It is not necessary to change a particularly unreasonable limit of it.
 - =:post-filename-format= is a naming rule of output htmlFile.
 
 When You want to add the file except the blog article, You add html to the following directory.

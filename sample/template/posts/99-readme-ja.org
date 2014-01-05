@@ -1,0 +1,227 @@
+# @layout post
+# @title 日本語の説明
+# @date 2000-12-1 
+# @tag tag1
+#+OPTIONS: toc:t
+# "@" => "&#64;"
+# "$" => "&#36;"
+* 始め方
+** 必要環境
+下記の最新版をあらかじめインストールしておいてください。
+
+- [[http://www.oracle.com/technetwork/java/javase/downloads/index.html][Java(JRE)]]
+- [[https://github.com/technomancy/leiningen][Leiningen]]
+- [[http://www.gnu.org/software/emacs/][Emacs]]
+
+** 使い方
+   
+まずはコードを落してください。
+#+BEGIN_SRC sh
+$ git clone git@github.com:mikio/misaki-orgmode.git
+$ cd misaki-orgmode
+#+END_SRC
+
+最初にorgファイルをコンパイルするためのemacsの絶対パスを記述する必要があります。
+
+ =misaki-orgmode/sample/_config.clj=
+#+BEGIN_EXAMPLE
+ :emacs "/usr/local/bin/emacs"
+#+END_EXAMPLE
+
+サンプルデモは下記で実行します。
+#+BEGIN_SRC sh
+$ lein run sample
+#+END_SRC
+
+下記にアクセスしてください。
+- http://localhost:8080
+  
+あとは、下記にあるorgファイルを編集することで、リアルタイムに記事が更新されます。
+#+BEGIN_SRC sh
+misaki-orgmode/sample/template/posts/*.org
+#+END_SRC
+
+** See also
+- http://liquidz.github.io/misaki/toc/01-getting-started.html
+
+* 環境設定
+サイト全体の設定は、 =:site-title, :site-subtitle, twitter-id, disqus-id= を変更します。
+
+
+ =misaki-orgmode/sample/_config.clj=
+#+BEGIN_SRC clojure
+:site {
+  :site-title "YOUR SITE NAME"
+  :site-subtitle "YOUR SITE DESCRIPTION."
+  :your-domain "yoursite.com"
+  :twitter-id "YOUR_TIWTTER_ID"
+  :disqus-id  "YOUR_DISQUS_ID"
+}
+#+END_SRC
+
+* カスタマイズ
+ =misaki-orgmode/sample/_config.clj= を編集することでカスタマイズできます。
+
+index.htmlにある記事一覧の表示数を変更するには =:posts-per-page= の数を指定します。
+#+BEGIN_EXAMPLE
+ :posts-per-page 2
+#+END_EXAMPLE
+
+最近の記事一覧の表示件数を変更するには、 =:recent-posts-num= を指定します。 
+#+BEGIN_EXAMPLE
+ :recent-posts-num 2
+#+END_EXAMPLE
+
+記事のURLは、デフォルトでは "/" で始まりますが、これを変更したい場合は、 =:url-base= を変更します。
+#+BEGIN_EXAMPLE
+ :url-base "/"
+#+END_EXAMPLE
+
+生成される*htmlのファイル名、orgファイル名を修正したい場合は下記を修正します。
+#+BEGIN_EXAMPLE
+ :post-filename-regexp #"^(.+)$"
+ :post-filename-format "＄(year)/＄(month)/＄(day)_＄(filename)"
+#+END_EXAMPLE
+- =:post-filename-regexp= は、入力するorfファイルの正規表現です。特に理由のない限り変更する必要はありません。
+- =:post-filename-format= は、出力されるhtmlファイルのパターンです。 =*site*= 変数の内容を使っていろいろカスタムできます。
+
+ブログ記事以外のページを追加したい場合、下記のディレクトリに追加します(下記は、about.htmlを追加する場合)。
+#+BEGIN_SRC sh
+misaki-orgmode/sample/template/about.html
+#+END_SRC
+
+同一サイトのページへのリンクは下記のようにします。
+#+BEGIN_SRC sh
+＄(root)about.html
+#+END_SRC
+
+もし追加したページに記事のリストなどを含む場合は、下記にそのページを追加します。
+#+BEGIN_EXAMPLE
+ :compile-with-post ["index.html" "archives.html" "atom.xml" "about.html"]
+#+END_EXAMPLE
+
+* テンプレートの編集
+
+** org-files
+記事の内容は、Emacsのorg-modeで記述します。
+
+その際、下記のようにヘッダーを記述する必要があります。
+@layout, @title, @dateは必須です。
+#+BEGIN_HTML
+<pre>
+# &#64;layout post
+# &#64;title Edit templates
+# &#64;date 2014-1-1 
+# &#64;tags tag1 tag2 tag3
+#+OPTIONS: toc:nil
+</pre>
+#+END_HTML
+
+- @layout :: このファイルのレイアウトとなるテンプレートを指定します。
+- @title :: 記事のタイトルを指定します。
+- @date :: 記事の日付を指定します。
+- @tags :: 記事のタグを指定します。
+- #+OPTIONS: :: もし目次が必要ならば、 =toc:t= 、を指定します。
+
+記事内で、後述する cuma テンプレートのにアクセスしたい場合は、下記のように =#+BEGIN_HTML= を使用します。
+#+BEGIN_HTML
+<pre>
+ &#35;+BEGIN_HTML
+ &#36;(hello "world")
+ &#35;+END_HTML
+</pre>
+#+END_HTML
+
+
+** html-files
+Misaki org-mode のhtmlには、 [[https://github.com/liquidz/cuma][cuma template]] を使用しています。
+#+BEGIN_EXAMPLE
+├── archives.html ;; 記事アーカイブの一覧
+├── atom.xml      ;; for rss.
+├── index.html    ;; for top page.
+├── layouts
+│   ├── layout.html ;; すべてのページのベースとなるレイアウトファイル。
+│   ├── post.html   ;; for post file.
+│   └── tag.html    ;; タグに属した記事一覧
+└── posts
+#+END_EXAMPLE
+
+テンプレートからサイト情報にアクセスするためには、 =*site*= 変数の理解が必要です。
+下記を参照してください。
+
+- http://liquidz.github.io/misaki/toc/03-edit-template.html
+
+*** サンプル
+
+**** 記事一覧
+#+BEGIN_HTML
+<pre>
+&lt;ul&gt;
+&#64;(for all-posts)
+&lt;li&gt;&lt;a href="&#36;(url)"&gt;&#36;(title)&lt;/a&gt;&lt;/li&gt;
+&#64;(end)
+&lt;/ul&gt;
+</pre>
+#+END_HTML
+
+#+BEGIN_HTML
+<ul>
+@(for all-posts)
+<li><a href="$(url)">$(title)</a></li>
+@(end)
+</ul>
+#+END_HTML
+
+**** タグ一覧
+
+#+BEGIN_HTML
+<pre>
+&lt;ul&gt;
+&#64;(for all-tags)
+  &lt;li&gt;&lt;a href="&#36;(url)"&gt;&#36;(name)(&#36;(count))&lt;/a&gt;&lt;/li&gt;
+&#64;(end)
+&lt;/ul&gt;
+</pre>
+#+END_HTML
+
+#+BEGIN_HTML
+<ul>
+@(for all-tags)
+  <li><a href="$(url)">$(name)($(count))</a></li>
+@(end)
+</ul>
+#+END_HTML
+
+
+*** カスタム関数
+cumaにはロジックを記述できません。なにか特別なことがしたい場合は、
+clojureの関数を定義することで、cumaからアクセスできます。
+そのためには =misaki-orgmode/sample/extension.clj= に関数を定義します。
+#+BEGIN_SRC clojure
+(defn hello
+  [data s]
+  (str/upper-case (str "hello " s "!!!")))
+#+END_SRC
+
+下記のように呼び出します。
+#+BEGIN_HTML
+<pre>
+  &#36;(hello "world") => hello world
+</pre>
+#+END_HTML
+#+BEGIN_HTML
+$(hello "world")
+#+END_HTML
+
+
+
+* 本家Misakiとの相違点
+いくつか仕様変更があります。
+
+- 記事オプション
+ - @filename :: まだ未実装だが、これを指定することで、出力ファイル名を強制的に変更できるようにする予定
+ - @date :: ファイル名のYYYY-MM-DDの縛りを無くす代わりに、このオプションが必要になった。
+- =*site*= 変数
+ - :post-sort-type :date-desc :: 今のところ記事の日付の降順しかサポートしていない。
+ - date :: 記事オプションの =@date= を導入したため、もともとあった date の意味(現在日付) は使用できなくなった。
+ - now-date :: 現在日付はこの変数でアクセスできる。

@@ -6,7 +6,7 @@
 # "@" => "&#64;"
 # "$" => "&#36;"
 
-* orgfiles
+* org-files
 You describe the contents of the article in org-mode of emacs.
 
 But it is necessary to describe the following header by all means in the beginning of the file.
@@ -37,7 +37,7 @@ Use =#BEGIN_HTML= as follows if You want to use cuma to mention later.
 #+END_HTML
 
 
-* htmlfiles
+* html-files
 The html of Misaki org-mode uses [[https://github.com/liquidz/cuma][cuma template]].
 #+BEGIN_EXAMPLE
 ├── archives.html ;; A list of articles.
@@ -96,7 +96,7 @@ Please refer to follows for the =*site*= variable.
 </ul>
 #+END_HTML
 
-** The additional method of the definition of Custom Functions.
+** Custom Functions.
 You can use it in a template file if You add a function to  =misaki-orgmode/sample/extension.clj= .
 #+BEGIN_SRC clojure
 (defn hello
