@@ -21,13 +21,13 @@
 <li><a href="$(url)">$(date-format date "yyyy MMM dd") - $(title)</a></li>
 @(end)
 </ul>
+@(if prev-page)
+<a href="$(prev-page)">&laquo; Newer posts</a>
+@(end)
 @(if next-page)
 <a href="$(next-page)">Older posts &raquo;</a>
 @(end)
 
-@(if prev-page)
-<a href="$(prev-page)">&laquo; Newer posts</a>
-@(end)
 
 <h2>Links</h2>
 <ul>

@@ -1,0 +1,41 @@
+# @layout post
+# @title puttyをやめて、cygwin Terminalにする
+# @date 2012-8-27 
+# @tags cygwin ssh
+
+puttyベースのminntyがいつのまにcygwinに完全統合されて、 =Cygwin
+Terminal= というアプリになっていたので「putty + pagent」の組み合わせを
+やめて、 =Cygwin Terminal= と =ssh-agent= を組みあわせてCygwinだけで
+SSH接続を実現することにした。
+
+その際、screenを導入することにした。screenを導入することによって、起動
+の高速化はもちろん、ssh-agentプロセスの共有化ができるので、その都度鍵の
+設定をする必要がなくなるからだ。
+
+導入は簡単。
+#+BEGIN_SRC sh
+$ apt-cyg install screen
+#+END_SRC
+
+次に設定ファイル。
+#+BEGIN_SRC sh
+defencoding utf8
+escape ^z^z
+startup_message off
+vbell off
+hardstatus alwayslastline "%w"
+#+END_SRC
+
+で端末を利用するときは次の手順で。
+#+BEGIN_SRC sh
+$ ssh-agent bash
+$ ssh-add ~/.ssh/id_dsa
+$ ssh-add -l # 確認
+$ screen
+$ ssh -A HOST
+#+END_SRC
+ssh-agentを起動してから、screenすることで毎回ssh-agent
+とssh-addをする必要がなくなる。
+
+あとは必要に応じて、 =C-z c= で仮想端末を追加すれば良い。これで、
+=Cygwin Terminal= で疑似マルチターミナルが実現できた!

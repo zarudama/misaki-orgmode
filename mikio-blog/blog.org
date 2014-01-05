@@ -186,93 +186,6 @@ BUNKER RING を貼り付けるためだけに利用するなら逆にこの薄�
 BUNKER RING を貼りつけるのに困っているかたはどうぞ。お勧めです!
 
 
-** DONE ubuntuでxmonadして、emacsでProcessingしてます :ubuntu:xmonad:processing:emacs:
-   CLOSED: [2013-08-07 水 12:56]
-
-最近Processingをいじり始めました。
-[[file:img/processing/xmonad.png]]
-上の画像は、Ubuntu上のXmonadでemacs使ってProcessingしてるところです。非常に快適です。
-
-ちょろっと作った
-#+BEGIN_HTML
-<a href="/processings/hello/">テストプログラム</a>
-#+END_HTML
-Javascriptモードで出力しました。こんなのが簡単に作れます。
-
-
-日経LinuxでProcessingの連載をしていたので興味があったのですが、きちんと読んでいませんでした(今読みかえしているところです)。
-最大のきっかけとなったのは下記の本を手にしたからです。
-#+BEGIN_HTML
-<a href="http://www.amazon.co.jp/gp/product/4798038644/ref=as_li_qf_sp_asin_il?ie=UTF8&camp=247&creative=1211&creativeASIN=4798038644&linkCode=as2&tag=ocha04-22"><img border="0" src="http://ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=4798038644&Format=_SL160_&ID=AsinImage&MarketPlace=JP&ServiceVersion=20070822&WS=1&tag=ocha04-22" ></a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=ocha04-22&l=as2&o=9&a=4798038644" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
-#+END_HTML
-
-この本はゲームプログラミングはおろかプログラミングそのものが初めてという人のための本です。
-事実、本の帯には「猫でも13歳でもわかる」みたいなことが書いてあります(笑)。
-実際本の内容は懇切丁寧に書かれており、猫は無理でも中学生ならゲームが作れそうです。
-
-初心者向けの本とはいえその内容は広範囲で、基本の2Dプログラミング、アイデアの出しかた、
-データの作成、Andoroidアプリの公開方法、3Dプログラミング、そしてなんとキネクトプログラミングまでやってます。
-自分はプログラミング初心者ではないですが、Processingをざっと勉強したいという経験者にもうってつけだと思います。
-
-特にいいなと思ったのは、プログラマの最大の敵であるゲーム素材のつくり方まで解説してある点です。
-プログラマは大抵絵心がなかったりするので、絵や音の素材を用意するのが苦手だと思うのですが、
-この本はデータ作成にも多くのページを割いて解説しています。
-また、本は分厚いですがそれぞれの章の独立生が割と高いので興味のあるところから読むってのもありかもです。
-
-*** processing のおすすめポイント
-**** processingは実はjavaである。
-文法はほとんどJavaなので実はしっかりした言語体系です。自分は最初、Processingという独自のスクリプト言語があるものと勘ちがいしていました。
-でも実は、Processingという独自の言語があるわけではなく、Java言語をProcessingというIDEを通して簡単に始められるというものでした。
-実際Processingでは普通にArrayListが使えますしジェネリクスも使えます。
-
-Processingをイメージで簡単に説明すると、「Processingという巨大なクラスがあって、
-このメソッドがグローバルな関数に見立てたAPIとなっていて、PDEという独自IDEによってあたかもグローバル関数や変数を簡単に定義できるようになっている。
-PDEのおかげで、javaのパスとかメインクラスの作成とか面倒なことを考えずすぐに再生ボタンで実行できる環境」ってことになります (間違ってたらすみません)。
-なのでJavaを実際に始める前にProcessingから入るというのは非常に有効な手段かと思います。
-
-**** インストールが超簡単。
-ダウンロードして展開するだけです。Java実行環境は同梱されてるので別途インストールする必要がありません。
-
-**** 複数のプラットホームに対応している。
-作ったプログラムは、Linux, Mac, Windows向けにエクスポートできます。
-出力されたものにJava実行環境も含まれているので配布先に別途Javaをインストールしてもらう必要もありません。
-
-**** HTMLモード、androidモードがある。
-昔のver1.5のころは、エクスポート方法としてアプレットがあったのですが、これはjavascriptに置きかわりました。
-JavaAppletはいろいろ問題があるのでこの変更は嬉しいですね。
-AndroidのエクスポートもSDKを別途ダウンロードする必要はあるものの非常に簡単にAndroidでプログラムを動かせます。
-
-結局、サポートプラットホームは、Linux、Mac、Windwos、Android、そしてJavascriptになります
-(ただし最近のゲームライブラリはどれもこの辺サポートしてるのでアピールポイントにはなりにくくなってますね)。
-問題は各モードでどこまで差異なく実行できるかですが、この辺はまだ検証できてません。 でも活動が活発なので期待です。
-*** emacsでprocessing
-emacsからもProcessingを使えます。下記を参考にしました。
-- http://hoshi-sano.hatenablog.com/entry/2013/08/03/121526
- 
-MELPAに登録されているのでインスールも簡単です。 =C-c C-p C-r= で実行できますし、
-エラーがあれば =M-g M-n= で簡単ジャンプできます。あとは javascript モードも対応してくれるといいな。
-
-*** xmonadでprocessing
-最後にXmonadでProcessingする方法を書いておきます。
-
-Xmonad上では、JavaのSwingがまともに動かないみたいなので、
-Processingするにはxmonadの設定ファイルを修正する必要があります。
-
- =~/.xmonad/xmonad.hs= ファイルのlogHookを下記のように =XMonad.Hooks.ICCCMFocus= をインポートして、
- logHook の右辺を =takeTopFocus= に置き換えます。
-#+BEGIN_SRC sh
-import XMonad.Hooks.ICCCMFocus
- :
-main = do
- :
-xmonad $ defaultConfig 
- :
-  , logHook = takeTopFocus
- :
-#+END_SRC
-意味はわかってません。。。下記のURLを参考にしました。
-- http://www.willprice.org/about.html
-
 
 ** DONE ubuntuでprocessingのショートカットをつくる        :ubuntu:processing:
    CLOSED: [2013-08-05 月 08:29]
@@ -1600,54 +1513,6 @@ laternaにおいて個人的になにより嬉しいのが、[[http://sjl.bitbuc
 Clojureのラッパーがあるということですね。これでTUIベースのテキストエディ
 タとか作りたいなぁ。
 
-** DONE python window tiler を試す                           :windows:xmonad:
-   CLOSED: [2013-01-29 火 23:07] 
-
-[[http://www.lifehacker.jp/2013/01/130120mykids_command_line.html][この記事]] にxmonadがでてきたので、自分が普段使っているWindowsでもタイル
-型マネージャを使いたくなった。実は以前にも何度か試したことがあったが、
-どれもキーバインドが好みでなかったり動作が不安定だったりで、いまいち納
-得のいくものがなかったので、使っていなかったのだ。でもその時から大分時
-間も経ってるので、最近は何かないかなと調べたところPythonで実装されたそ
-の名もずばり「Python-windows-tiler」というものを見つけた。
-
- - https://github.com/Tzbob/python-windows-tiler
- - http://d.hatena.ne.jp/uhiaha888/20121125/1353824257
-
-使用方法は簡単で、バイナリを解凍してPWT.exeを実行するだけだが、パスに日
-本語を含むとエラーになるのでルートに解凍するのが良いと思う。
-
-キーバインディングはAwesomeなどと似ている。ただ、Altキーを使用するので
-Emacsとキーバインディングが被ってしまうのでconfig.iniを開き、altを全て
-winにしてPWT.exeを再起動した。
-
-これでとりあえずEmacsとのキーバインディングの回避ができた。めでたしめで
-たし、と思ったのだが、Win+Lキーでウィンドウの横幅を広げようとしたらロッ
-ク画面になってしまう。。。
-
-てことでWin+Lを無効化する方法を模索したけど、結局どれもうまくいかなかっ
-たので横幅操作は封印することにした。てか、Winを使用するコンビネーション
-キーはどれもWindowsに奪われてしまってうまくイカナイ。。。とはいえ、Win
-キー経由でタイル操作はとても使いやすい。多様する操作はこれ。
-
-| Win+SPC        | ウィンドウレイアウトの変更             |
-| Win+j, Win+k   | ALT+TABの代りになる                    |
-| Win+S+Ent      | プライマリの切替                       |
-| Win+数字キー   | 仮想デスクトップの切替                 |
-| Win+S+数字キー | カレントアプリを仮想デスクトップへ移動 |
-
-特にWin+j,kがイイ!
-
-自宅のUbuntu環境ではStumpWMを使用していたが、これはEmacserにはなじみの
-あるキー操作なんだけど(Screen系のプリフィックスキーのあるやつ)、それが
-逆に操作の混乱を生んでしまう。というのもの、自分の場合デスクトップの
-emacsでは =windows.el= を使用し、端末ではtmuxを使用してるので、タイル型
-ウィンドウマネージャのキーバインドにプレフィックスを使用すると混乱する
-のだ。それにデスクトップのウィンドウ操作はできるだけすばやくしたいので
-Screen系のStumpWMよりAwesome系のほうがサクサク操作できる。以上から自分
-にはAwesome系の操作体系のほうが向いているような気がした。
-
-ということで、Ubuntuではxmonadをもう一度使ってみようと思う。
-
 ** DONE emacsでgoogleReaderを読む                              :emacs:hamari:
    CLOSED: [2013-01-11 金 21:36]
 
@@ -1722,22 +1587,6 @@ cygwin上のemacsだったら大丈夫だった。
 さそう(静的htmlなので)。また表示される情報もタグ毎ではないし、件数も少
 ないので自分の要件を満たしてなかった。CUIのpeepは大分使いやすかったので
 残念。
-
-** DONE cygwin経由で表示したtmuxの分割罫線が表示崩れする             :hamari:
-   CLOSED: [2013-01-06 日 08:56]
-
-最初Cygwinのバージョンが古いからかなと思ってバージョンアップしても改善
-せず、ならばとtmuxのバージョンを最新にしても直らず、結局cyg-terminalの
-オプションでTextの設定を下記のように変更したら、表示崩れが解消した。
-#+BEGIN_EXAMPLE
-変更前
-Locale:JA_jp
-CharacterSet:UTF-8
-
-変更後
-Locale:C
-CharacterSet:UTF-8
-#+END_EXAMPLE
 
 ** DONE CentOS5.6にtmux1.7をインストールする                         :hamari:
    CLOSED: [2013-01-06 日 08:56]
@@ -2884,170 +2733,6 @@ rake (0.9.2.2)
 $ ~/.dropbox-dist/dropbox.py start   
 #+END_SRC
 
-** DONE cygwinでssh接続できない                           :cygwin:hamari:ssh:
-   CLOSED: [2012-12-22 土 22:27]
-
- =/home/mikio= にホームを設定してるのではなく、 =c:/Users/mikio= にHOMEを設定し
-てる場合でssh接続すると、下記のように =/home/mikio= ディレクトリが作成でき
-ないと怒られてしまう。
-#+BEGIN_SRC sh
-$ ssh -v 192.168.10.2 -p 30890 -i ~/.ssh/id_rsa.whitebase
-OpenSSH_6.1p1, OpenSSL 1.0.1c 10 May 2012
-debug1: Connecting to 192.168.10.2 [192.168.10.2] port 30890.
-debug1: Connection established.
-Could not create directory '/home/mikio/.ssh'.
-#+END_SRC
-この場合は、 =/etc/passwd= の =/home/mikio= となってるところを、
- =/cygdrive/c/Users/mikio= に書き換えれば良い。
-- http://ekawas.blogspot.jp/2007/03/solving-pesky-ssh-issues-in-cygwin.html
-
-しかし今度はpublickeyがパーミッションエラー。
-#+BEGIN_SRC sh
-debug1: Authentications that can continue: publickey
-debug1: Next authentication method: publickey
-debug1: Trying private key: /cygdrive/c/Users/miki/.ssh/id_rsa.whitabase
-debug1: No more authentication methods to try.
-Permission denied (publickey).
-#+END_SRC
-下記よるとホスト側で =/etc/ssh/sshd_config= の設定でユーザを許可してな
-いのが原因とあったので調べたところドンピシャでした。
-
-- http://lunatear.net/archives/000300.html
-
-早速編集して再起動したところ、まだ駄目。
-#+BEGIN_SRC sh
-# AllowUsersにユーザを追加
-$ sudo vi /etc/ssh/sshd_config
-
-# 再起動 
-$ sudo /etc/init.d/ssh restart
- ：
-debug1: SSH2_MSG_SERVICE_ACCEPT received
-debug1: Authentications that can continue: publickey
-debug1: Next authentication method: publickey
-debug1: Trying private key: /cygdrive/c/Users/miki/.ssh/id_rsa.whitabase
-debug1: No more authentication methods to try.
-Permission denied (publickey).
-#+END_SRC
-
-接続ホスト側でログを確認してみる。
-
- =/etc/ssh/sshd_config= を編集
-#+BEGIN_SRC sh
-SyslogFacility AUTH
-LogLevel VERBOSE
-#+END_SRC
-
-#+BEGIN_SRC sh
-$ sudo tail -f /var/log/auth.log
- :
-Dec  1 21:54:00 whitebase sshd[20701]: Set /proc/self/oom_score_adj to 0
-Dec  1 21:54:00 whitebase sshd[20701]: Connection from 192.168.10.229 port 64522
-Dec  1 21:54:01 whitebase sshd[20701]: Connection closed by 192.168.10.229 [preauth]
- :
-#+END_SRC
-...ログをみてもよくわからなかった。
-
-今度は、サーバー側でもデバッグモードにして接続してみる。
-#+BEGIN_SRC sh
-mikio@whitebase:~/.ssh$ whereis sshd
-sshd: /usr/sbin/sshd /usr/share/man/man8/sshd.8.gz
-mikio@whitebase:~/.ssh$ sudo /usr/sbin/sshd -d
-debug1: sshd version OpenSSH_5.9p1 Debian-5ubuntu1
-debug1: read PEM private key done: type RSA
-debug1: Checking blacklist file /usr/share/ssh/blacklist.RSA-2048
-debug1: Checking blacklist file /etc/ssh/blacklist.RSA-2048
-debug1: private host key: #0 type 1 RSA
-debug1: read PEM private key done: type DSA
-debug1: Checking blacklist file /usr/share/ssh/blacklist.DSA-1024
-debug1: Checking blacklist file /etc/ssh/blacklist.DSA-1024
-debug1: private host key: #1 type 2 DSA
-debug1: read PEM private key done: type ECDSA
-debug1: Checking blacklist file /usr/share/ssh/blacklist.ECDSA-256
-debug1: Checking blacklist file /etc/ssh/blacklist.ECDSA-256
-debug1: private host key: #2 type 3 ECDSA
-debug1: rexec_argv[0]='/usr/sbin/sshd'
-debug1: rexec_argv[1]='-d'
-Set /proc/self/oom_score_adj from 0 to -1000
-debug1: Bind to port 30890 on 0.0.0.0.
-Server listening on 0.0.0.0 port 30890.
-debug1: Bind to port 30890 on ::.
-Server listening on :: port 30890.
-debug1: Server will not fork when running in debugging mode.
-debug1: rexec start in 5 out 5 newsock 5 pipe -1 sock 8
-debug1: inetd sockets after dupping: 3, 3
-Connection from 192.168.10.229 port 64488
-debug1: Client protocol version 2.0; client software version OpenSSH_6.1
-debug1: match: OpenSSH_6.1 pat OpenSSH*
-debug1: Enabling compatibility mode for protocol 2.0
-debug1: Local version string SSH-2.0-OpenSSH_5.9p1 Debian-5ubuntu1
-debug1: permanently_set_uid: 105/65534 [preauth]
-debug1: list_hostkey_types: ssh-rsa,ssh-dss,ecdsa-sha2-nistp256 [preauth]
-debug1: SSH2_MSG_KEXINIT sent [preauth]
-debug1: SSH2_MSG_KEXINIT received [preauth]
-debug1: kex: client->server aes128-ctr hmac-md5 none [preauth]
-debug1: kex: server->client aes128-ctr hmac-md5 none [preauth]
-debug1: expecting SSH2_MSG_KEX_ECDH_INIT [preauth]
-debug1: SSH2_MSG_NEWKEYS sent [preauth]
-debug1: expecting SSH2_MSG_NEWKEYS [preauth]
-debug1: SSH2_MSG_NEWKEYS received [preauth]
-debug1: KEX done [preauth]
-debug1: userauth-request for user mikio service ssh-connection method none [preauth]
-debug1: attempt 0 failures 0 [preauth]
-debug1: PAM: initializing for "mikio"
-debug1: PAM: setting PAM_RHOST to "miki-pc.lan"
-debug1: PAM: setting PAM_TTY to "ssh"
-Connection closed by 192.168.10.229 [preauth]
-debug1: do_cleanup [preauth]
-debug1: monitor_read_log: child log fd closed
-debug1: do_cleanup
-debug1: PAM: cleanup
-#+END_SRC
-うーん、よくわからん。
-
-今度は、クライアント側のデバッグログの出力レベルをあげて試す。
-(vの数がレベルになる。知らなかった。)
-#+BEGIN_SRC sh
-$ ssh -vvv whitebase
-  :
-  :
-debug1: Next authentication method: publickey
-debug1: Trying private key: /cygdrive/c/Users/miki/.ssh/id_rsa.whitabase
-debug3: no such identity: /cygdrive/c/Users/miki/.ssh/id_rsa.whitabase
-debug2: we did not send a packet, disable method
-debug1: No more authentication methods to try.
-Permission denied (publickey).
-#+END_SRC
-おおおお!、なんという初歩的ミス!。 =.ssh/config= の秘密鍵の名前をタイポ。
-#+BEGIN_SRC sh
-- IdentityFile ~/.ssh/id_rsa.whitabase
-+ IdentityFile ~/.ssh/id_rsa.whitebase
-#+END_SRC
-これで無事接続できました。
-*** まとめ
-- パーミッションを疑え!
-  -  =$HOME= -> =700=
-  -  =$HOME/.ssh= -> =700=
-  -  =$HOME/.ssh/id_rsa= -> =644=
-  - サーバ側の =$HOME/.ssh/authorized_keys= -> 644
-- ログイン許可してるユーザを確認しろ!
-  - サーバ側の =/etc/ssh/sshd_config= の =AllowUsers= 
-- クライアント側のログを確認しろ!
-  -  =ssh -v HOSTNAME=
-  - vオプションの数でデバッグレベルを調節できる!
-    -  =ssh -v HOSTNAME=
-    -  =ssh -vv HOSTNAME=
-    -  =ssh -vvv HOSTNAME= 
-- サーバ側のログを確認しろ!
-  - サーバ側の =/etc/ssh/sshd_config=
-    -  =SyslogFacility AUTH=
-    -  =LogLevel VERBOSE=
-  -  =sudo tail -f /var/log/auth.log=
-  -  =/usr/sbin/sshd -d=
-- =$HOME/.ssh/config= のタイポを確認しろ!
-
-以上で大体解決すると思います。
-
 ** DONE clojureでtimeout処理                                        :clojure:
   CLOSED: [2012-11-26 月 18:21]
 
@@ -3585,48 +3270,6 @@ o-blogはorg-mode使いとしてはものすごく使いやすくて大変満足
 (setq howm-file-name-format "%Y/%m/%Y_%m_%d.howm")
 #+END_SRC
 
-** DONE howm-modeとorg-modeを同時に使ってみたい。                     :emacs:
-   CLOSED: [2012-09-28 金 10:02]
-
-しばらくメモ管理は、org-modeのみで運用してきた。
-ブログの下書きも blog.orgという1ファイルのみで運用している
-(これはo-blogというelispが1ファ イルのみのサポートなため。
-複数ファイルでの運用方法もあるかもしれないが未確認。
-結果、ポケットひとつの原則に従うことになりすごくやりやすい)。
-
-しかしさすがに内容が増えてくると管理がきつくなってくるし、
-将来的には Clojure版JykyllのMisakiに移行したいと考えているので、
-そろそろhowmにも手を出してみようかなと。
-
-howmにもリンク機能やTODO機能があるが、
-これらはorg-modeにもあるのでそのまま継続するとして、
-howmに任せたいのはファイル管理。
-ファイル自体を意識せずにどんどんメモが取れる環境が理想。
-
-*** やること
-- 拡張子は.howmと.orgどちらにするか。
- - →howmの機能は主にファイル管理に使用する予定なのと、改宗したときに.howmだと面倒なので.orgでいく。
- - →howmディレクトリをつくってその配下のファイルはすべてhome-modeにしたほうがいいのかも。
- - →.elも.txtも.orgもすべてhowmで管理。だけどタイトルの仕切りは？
-- 日報をhowmでうまいこと管理したい。
- - →repotディレクトリとか作る？
-- orgのtagによるマッチ機能があれば、howmを使う必要もないかも？
-
-*** 影響されたサイト
-- [[http://yamadawindsurf.blogspot.jp/][Evernote vs Emacs+howm+org+Dropbox]]
- - 完全同意です。evernoteは流行り始めたころは使ってましたが、
-   emacsとの連携がしづらいのでいつのまにか使わなくなってしまいました。
-
-- [[http://techwave.jp/archives/51465161.html][emacsだけで書上げた書籍…翔泳社「ツイッター情報収集術」のつくり方(2) 執筆環境編【増田(maskin)真樹】]]
- - すごいですね。この方のノウハウをぜひ聞いてみたいです。
-
-- [[http://kinjo.github.com/hago16-emacs/][My life on Emacs]]
- - org-modeとhowmを同時に使用するというのはこの方の資料を拝見して初めて気づきました。
-   howmをサンプルプログラムと日報に活用ってところが詳しくしりたいです。
-
-- [[http://yono05.wordpress.com/2011/11/23/emacs-org-mode-howm-mobileorg-dropbox-%E3%81%A7%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E7%AE%A1%E7%90%86%E7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F/][Emacs + Org-mode + howm + MobileOrg + Dropbox でテキスト管理環境を構築した]]
- - MobileOrgもぜひ活用したいと思っているのですが、まだできてないですね。。。
-
 ** DONE w3m-emacsが重いのをなんとかしたい。                           :emacs:
    CLOSED: [2012-09-28 金 10:02]
 
@@ -3808,24 +3451,6 @@ deb http://jp.archive.ubuntu.com/ubuntu/ precise main
 ちなみにこのソースリストは下記で簡単に作成できる。
 - http://repogen.simplylinux.ch/
 
-** DONE Ubuntu Server インストール時に前回作ったLVMが削除できなかった。 :hamari:ubuntu:
-   CLOSED: [2012-12-30 日 17:34]
-
-Ubuntu Serverをインストールし直したとき、前回作ったLVMを再構成しようとしたら
-VGやLVMが削除できなくて先に進めなくなった。
-
-この状態を回避するには、 まず =ALT+F2= でコンソールを切り替える。
-Ubuntu Serverでは仮想コンソールが複数立ちあがっていて、 =ALT + F1 - F4= で切り替えられるのだ。
-
-まず、論理ボリュームを削除し、その後、ボリュームグループを削除する。
-#+BEGIN_SRC sh
-$ lvremove /dev/{ボリュームグループ}/{論理ボリューム}
-$ vgremove /dev/{ボリュームグループ}
-#+END_SRC
-で削除できる。
-この時、swap領域に割り当てたものが削除できない場合があるが
-その時は、いったんインストール作業を中断してやり直せばよい。
-  
 ** DONE gnusでいろいろいじってたらInboxが表示されなくなった。   :hamari:gnus:
    CLOSED: [2012-09-28 金 10:02]
 
@@ -3835,57 +3460,6 @@ gnusの設定をいろいろいじっていたら、どこかのタイミング�
 - =~/Mail= を削除しても駄目だったが、 =.newsrc= 、 =.nnmail-cache= 、 =~/News= を削除したらうまくいった。
 - =~/News= も削除したほういい
    
-** DONE swank-clojureの後継モジュールのnREPLを試してみた      :clojure:nrepl:
-   CLOSED: [2012-09-07 金 22:02]
-
-いつのまにかswank-clojureが非推奨になり、代わりにnREPLというものが推奨されていた。
-- https://github.com/technomancy/swank-clojure
-#+BEGIN_EXAMPLE
-This project is no longer under active development.
-
-New users are strongly encouraged to try out nrepl.el instead. If you
-need an advanced debugger, Ritz might be a better fit.
-#+END_EXAMPLE
-超意訳。「swank-clojureは全然活動してないから、新規のユーザはnrepl.elを強く推奨
-する。もしイケテるデバッガが欲しいならRitzがいいかもYO!。」
-
-ということで、el-getでレシピに下記を追加して =nrepl.el= をインストール。
-#+BEGIN_SRC emacs-lisp
- (:name nrepl
-  :type github
-  :pkgname "kingtim/nrepl.el"
- )
-#+END_SRC
-
-で =lein2.0= で適当にプロジェクトをつくって、 =project.clj= に下記を追加。
-#+BEGIN_EXAMPLE
-  :dependencies [[org.clojure/clojure "1.4.0"]
-                 [org.clojure/tools.nrepl "0.2.0-beta9" ]]
-#+END_EXAMPLE
-
-最後に =M-x nrepl-jack-in= すると、nREPL-Server が起動して、nREPLが起動する。
-
-キーバインドはほとんどSLIMEと同様だし、SLIMEの下記の特徴も実現してるの
-で、これは本格的に移行できる雰囲気。
-- シンボルの補完(TABで補完できる)
-- 関数の引数表示(シンボルを打ちこむとミニバッファに自動表示)
- 
-ただSLIMEを常用してきたわけではないので足りない機能もまだありそうだけど。
-たとえば、
-- REPL上でエラーが発生してもデバッガが起動しない(例外が表示されるだけ)
-- nREPLとは直接関係ないけど、auto-complte.elに対応するモジュール(ac-slime)がない。
-- HyperSpecのようなドキュメントシステムは？(doc関数ががあるからいらないか)
-
-ちなみに下記の記事を読むと、nREPL開発に至る経緯がある。
-- http://technomancy.us/163
-
-clojureでSLIMEを使用する場合、最新のバージョンだと動かなかったりするの
-で、環境構築に苦労したけど、専用のSLIME代替モジュールができたおかげで環
-境構築が楽になりますな。
-
-nREPLは、まだまだできたばかりのプロジェクトだけれども、SLIMEの呪縛から
-解き放たれた期待のプロジェクト。積極的に使っていきたい。
-
 ** DONE nexus7をroot化
    CLOSED: [2012-09-28 金 10:02]
 
@@ -3938,44 +3512,6 @@ type 1 or 2 then press ENTER:
 ればroot化されたとになる。
 
 以上で作業完了である。
-
-** DONE Firefoxでサイトを開いた時に自動フォーカスされるのを無効化する。 :firefox:
-   CLOSED: [2012-09-06 木 22:26]
-
-Twitter,google,その他多くの検索サイトでは、ページを開くと勝手にフォーカ
-スが移動して入力待ち状態になる。この挙動は多くの普通の人にとっては操作
-性が良くなるんだろうけど、FirefoxのKeysnailでキーボード操作をメインとし
-ている自分にとっては不便極まりない。
-
-ってことで、この挙動をどうにかするAdd-Onを探していたんだけど、なぜかなかった。
-
-代わりにGireaseMonkey[fn:1]を使った代替方法が見つかったのでそのスクリプトを使用することにした。
-- http://javascripter.hatenablog.com/entry/20080620/1213923411
-
-GreaseMonkeyアドオンをインストールして、下記コードを追加すれば良い。
-
-新規ユーザスクリプトを追加する手順は以下。
-- [メニュー]->[ツール]->[GreasMonkey]->[新規ユーザースクリプト]
-
-#+BEGIN_SRC javascript
-// ==UserScript==
-// @name        no-focus
-// @namespace   no-focus
-// @version     1
-// @include     http*
-// ==/UserScript=
-window.addEventListener('load',
-function() {
-  document.activeElement.blur();
-  this.removeEventListener('load', arguments.callee, false);
-},
-false);
-#+END_SRC
-
-コードの意味はよくわかってないから、問題があるかもしれないが、その場合
-はその時考えよう。
-
-[fn:1] Greasemonkeyはchromeにも移植されているので、chromeでも利用できるかもしれない。
 
 ** DONE windows.elの作業領域                                          :emacs:
    CLOSED: [2012-09-01 日 10:07]
@@ -4235,46 +3771,6 @@ apt-cyg install libopenssl098
 
 - http://cygwin.com/ml/cygwin/2003-08/msg00628.html
    
-** DONE puttyをやめて、cygwin Terminalにする                     :cygwin:ssh:
-   CLOSED: [2012-08-27 月 23:46]
-
-puttyベースのminntyがいつのまにcygwinに完全統合されて、 =Cygwin
-Terminal= というアプリになっていたので「putty + pagent」の組み合わせを
-やめて、 =Cygwin Terminal= と =ssh-agent= を組みあわせてCygwinだけで
-SSH接続を実現することにした。
-
-その際、screenを導入することにした。screenを導入することによって、起動
-の高速化はもちろん、ssh-agentプロセスの共有化ができるので、その都度鍵の
-設定をする必要がなくなるからだ。
-
-導入は簡単。
-#+BEGIN_SRC sh
-$ apt-cyg install screen
-#+END_SRC
-
-次に設定ファイル。
-#+BEGIN_SRC sh
-defencoding utf8
-escape ^z^z
-startup_message off
-vbell off
-hardstatus alwayslastline "%w"
-#+END_SRC
-
-で端末を利用するときは次の手順で。
-#+BEGIN_SRC sh
-$ ssh-agent bash
-$ ssh-add ~/.ssh/id_dsa
-$ ssh-add -l # 確認
-$ screen
-$ ssh -A HOST
-#+END_SRC
-ssh-agentを起動してから、screenすることで毎回ssh-agent
-とssh-addをする必要がなくなる。
-
-あとは必要に応じて、 =C-z c= で仮想端末を追加すれば良い。これで、
-=Cygwin Terminal= で疑似マルチターミナルが実現できた!
-
 ** DONE Windowsでプロセスツリーや実行ファイルのパスを表示したい     :windows:
    CLOSED: [2012-08-27 月 11:46]
 
@@ -4889,20 +4385,6 @@ ADT(AndroidDeveloppersTool)は、AndroidSDKとEclipseの橋渡しをするプラ
 
 *** 参考
 - http://techbooster.jpn.org/andriod/environment/5580/
-
-** DONE Javaでカンマ区切りの数字を出力する。                           :java:
-   CLOSED: [2012-05-21 月 08:27]
-
-#+begin_src sh
-int value = 99999999;
-String.format("%1$,3d円", value); // => 99,999,999円;
-#+end_src
-この場合「%1$,3d」が書式になる。
-- %は書式の開始を示す。
-- 1$は引数のインデックスを示す。ひとつの引数を使い回すときなどに必要。今回の場合はひとつなので無くても良い。
-- ,は区切りたい文字
-- 3 は区切りたい桁
-- d は引数が数字(デシマル)を示す。
 
 ** DONE GalaxyNote(国際版)をroot化                                  :android:
    CLOSED: [2012-05-18 金 08:27]
@@ -6522,99 +6004,6 @@ Emacsで書いてコピペする方法をとるので問題なしです。
 
 ということで、SKKはデスクトップ用途でもおすすめですよ!
 
-** DONE SKKを導入してみる(WindowsXP)                          :skk:windowsxp:
-   CLOSED: [2012-03-09 月 18:23]
-
-去年からemacs上の日本語入力にはDDSKKを使い続けているのですが、
-emacsの外の世界ではgooglIME(or MOZC)を使用していました。
-滅多に外の世界で活動しないため、別にこれで不自由はなかったのですが、
-ふと最近のWindwosSKK界隈を調べてみると、今まで[[http://homepage3.nifty.com/monjya/skkime.jis.html][skkime]] 一択だったのに
-クライアントが増えてます!。。。ということでいくつか検証してみて
-最終的に下記の組み合わせを使用することにしました。快適!快適ー!
-
- - [[http://code.google.com/p/corvus-skk/][corvus-SKK(IME)]]
- - [[http://www.megadriver.info/~fumi/wceskkserv/][wceSKKServ(辞書サーバー)]]
- - [[http://d.hatena.ne.jp/hitode909/20110421/1303274561][google-ime-skk(辞書サーバー)]]
-
-ということで以下に調べた内容をメモしておきます。
-
-*** corvus-SKK
-- 最近できたらしいWindows用のFEP
-- 辞書が独自形式
- - 取り込みボタンを押したタイミングで辞書が独自形式に変換されるので、これは逆に長所になった。
- - emacs側のユーザー辞書を直接指定しても別ファイルになるので、クライアント単位で競合せずにすむ。
-- サーバーがひとつしか使えない
- - wceSKKServであれば、複数の辞書を扱えるので問題なし
-- トリガキーが「M-漢字キー」しかうけつけておらず、「漢字」キーのみでない
-- 独自のサーバ(corvuserv)を使用しているが、まだ完成度が低そう。
-- StickyShiftが使える!
-- Windows XPのテキストサービスフレームワーク(TSF)が不安定なため、XPでの利用はあまり推奨されない。
-
-**** 「;」によるStickyShiftを実現する方法
- - 設定画面で[位置] タブで下記の設定を施す。
-#+begin_src sh
-  開始：;
-  代替：なし
-  送り：なし
-#+end_src
-
-
-*** [[http://coexe.web.fc2.com/skkfep.html][SKK日本語入力FEP]]
- - 軽快な動作を目的とした比較的新しいWindows版SKK。
- - Windowsアプリを使いやすくするための独自機能が特徴。
- - [[http://coexe.web.fc2.com/programs.html#skkime][SKK-IME1.5改]] と同じ作者であり基本理念が引き継がれている。
- - WindowsXPのテキストサービスフレームワーク(TSF)が不安定なため、XPでの利用はあまり推奨されない。
- - WindowsXPで使用する場合は、SKK-IME1.5改を使用したほうが良い。
-
-*** wceSKKServ
-- wceSKKServというサーバーを使って、ddskkと辞書の共有を図る。
-- wceSKKServで使用する辞書は、euc-jpしか受付ない模様。
-- サーバにはユーザ辞書は指定できない。
-- 従って、ddskkで育てた辞書をskkIMEでも利用するということはできない。
-- どうしてもしたい場合は、コピーしたものを使う。
-- 例えばスタートアップでユーザー辞書をコピーするとか。
-- サーバを使うメリットとしては、以下がある。
- - linux環境において辞書を共用することでメモリの節約
- - 予めサーバーとして立ちあげておくことで、起動がスムーズになる
- - サーバー側に複数の辞書を登録することで、クライアント側では、
-   そのサーバーをひとつ設定するだけで複数の辞書を指定したことになり、設定が楽になる。
-
-*** google-ime-skk
-最近は、GoogleIMEが流行っているので、SKKをこのまま使い続けていいのか若干気の迷いがありましたが、
-Google-IME-SKKの存在を知ってその不安もなくなりました。なぜなら、SKKからGoogleの辞書が使えるからです。
-この辞書のおかげで、ネットで話題の言葉とかも簡単に変換可能だし、
-ローカルの辞書でヒットしなかった場合でも大抵googleIMEが拾ってくれます。
-
-また、Linux上のGoogleIMEであるMOZCの場合、確かネットのデータは反映されないのですが、
-このサーバを使えば、その問題も解決します。
-スバラシス!
-
-**** xp環境でのインストール
-
-gemを入れてから下記でインストールする。
-#+begin_src sh
-dos> gem install google-ime-skk
-dos> gem install json
-#+end_src
-
-下記のようなバッチファイルを作ってスタートアップに登録しておく。
-「gskk.bat」
-#+begin_src sh
-google-ime-skk.bat
-#+end_src
-
-あとは下記に接続すればok。
-#+begin_src sh
-localhost:55100
-#+end_src
-
-コンソールが表示されるのが嫌という向きもあるだろうが
-自分の場合は、あとでログが見れたほうが嬉しいことが多いので
-そのままにしている。
-
-また、バーチャルデスクトップ(WinDeskwide)を使っているので
-不要なウィンドウは全部そっちに集めてスッキリできるので問題ない。
-
 ** DONE emacsで辞書を引けるようにしたがうまくいかない          :emacs:hamari:
    CLOSED: [2012-04-04 水 21:45]
 
@@ -7080,74 +6469,6 @@ $ sudo /sbin/ldconfig
 
 *** 参考
 - http://www.atmarkit.co.jp/flinux/rensai/linuxtips/300sharelib.html
-
-** DONE tmux セッションの保存方法                                      :tmux:
-   CLOSED: [2012-02-12 日 09:07]
-
-下記を参考に.bashrcにSSH_AUTH_SOCKを固定にする方法で解決した。
-- http://www.gcd.org/blog/2006/09/100/
-
-#+BEGIN_SRC sh
-agent="$HOME/tmp/ssh-agent-$USER"
-if [ -S "$SSH_AUTH_SOCK" ]; then
-        case $SSH_AUTH_SOCK in
-        /tmp/*/agent.[0-9]*)
-                ln -snf "$SSH_AUTH_SOCK" $agent && export SSH_AUTH_SOCK=$agent
-        esac
-elif [ -S $agent ]; then
-        export SSH_AUTH_SOCK=$agent
-else
-        echo "no ssh-agent"
-fi
-#+END_SRC
-
-testコマンドのSオプションは以下のとおり。
-#+BEGIN_EXAMPLE
--S FILE
-  FILE exists and is a socket
-#+END_EXAMPLE
-
-やっていることは、直接参照する$SSH_AUTH_SOCKは固定のパスにしてしまい、
-ログインごとに変わるUNIXドメインソケットはシンボリックリンクで指し示すようにしている。
-
-*** その他参考にしたもの
-- http://hibari.2ch.net/test/read.cgi/unix/1268778432/
-
-#+BEGIN_EXAMPLE
-84 ：名無しさん＠お腹いっぱい。：2010/11/02(火) 15:34:12
-    screenと違って、アタッチ時に環境変数SSH_AUTH_SOCKを新しい値に更新してくれるのは
-    嬉しいんだけど、それが実際シェルに反映されるのは、新しいシェルを追加した時だけだよね？
-
-    デタッチ前から動いてるシェルのSSH_AUTH_SOCKを自動的に更新する事って出来る？
-
-87 ：名無しさん＠お腹いっぱい。：2010/11/21(日) 07:31:25
-    >>84
-    シェル側の適当なフックで、親プロセスの環境変数を調べるとか。
-
-88 ：名無しさん＠お腹いっぱい。：2010/11/24(水) 16:56:11
-    >>84
-    こんなのしてる：
-    sc() {
-    　if [ -n "$TMUX" ]; then
-    　　unset $(tmux show-env | sed -n 's/^-//p')
-    　　eval export $(tmux show-env | sed -n 's/$/"/; s/=/="/p')
-    　else
-    　　tmux -u start \; attach \; $@;
-    　fi
-    }
-    これでとにかくscって打てばアタッチするし、アタッチ済なら
-    アタッチ前シェルの環境を取り込んでくる。 
-#+END_EXAMPLE
-
-show-envはshow-environmentのエイリアスで、-で始まる環境変数はシステムか
-ら削除されたものらしい。
-#+BEGIN_SRC sh
-# "-"のついている（tmuxにより削除された環境変数）をクリア
-unset $(tmux show-env | sed -n 's/^-//p')
-
-# 環境変数の再定義
-eval export $(tmux show-env | sed -n 's/$/"/; s/=/="/p')
-#+END_SRC
 
 ** DONE adkのインストール                                           :android:
    CLOSED: [2012-02-11 土 09:04]

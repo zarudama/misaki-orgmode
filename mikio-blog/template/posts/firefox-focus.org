@@ -1,0 +1,39 @@
+# @layout post
+# @title Firefoxでサイトを開いた時に自動フォーカスされるのを無効化する。
+# @date 2012-9-6 
+# @tags firefox
+
+Twitter,google,その他多くの検索サイトでは、ページを開くと勝手にフォーカ
+スが移動して入力待ち状態になる。この挙動は多くの普通の人にとっては操作
+性が良くなるんだろうけど、FirefoxのKeysnailでキーボード操作をメインとし
+ている自分にとっては不便極まりない。
+
+ってことで、この挙動をどうにかするAdd-Onを探していたんだけど、なぜかなかった。
+
+代わりにGireaseMonkey[fn:1]を使った代替方法が見つかったのでそのスクリプトを使用することにした。
+- http://javascripter.hatenablog.com/entry/20080620/1213923411
+
+GreaseMonkeyアドオンをインストールして、下記コードを追加すれば良い。
+
+新規ユーザスクリプトを追加する手順は以下。
+- [メニュー]->[ツール]->[GreasMonkey]->[新規ユーザースクリプト]
+
+#+BEGIN_SRC javascript
+// ==UserScript==
+// @name        no-focus
+// @namespace   no-focus
+// @version     1
+// @include     http*
+// ==/UserScript=
+window.addEventListener('load',
+function() {
+  document.activeElement.blur();
+  this.removeEventListener('load', arguments.callee, false);
+},
+false);
+#+END_SRC
+
+コードの意味はよくわかってないから、問題があるかもしれないが、その場合
+はその時考えよう。
+
+[fn:1] Greasemonkeyはchromeにも移植されているので、chromeでも利用できるかもしれない。

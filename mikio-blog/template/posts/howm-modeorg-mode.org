@@ -1,0 +1,44 @@
+# @layout post
+# @title howm-modeとorg-modeを同時に使ってみたい。
+# @date 2012-9-28 
+# @tags emacs
+
+しばらくメモ管理は、org-modeのみで運用してきた。
+ブログの下書きも blog.orgという1ファイルのみで運用している
+(これはo-blogというelispが1ファ イルのみのサポートなため。
+複数ファイルでの運用方法もあるかもしれないが未確認。
+結果、ポケットひとつの原則に従うことになりすごくやりやすい)。
+
+しかしさすがに内容が増えてくると管理がきつくなってくるし、
+将来的には Clojure版JykyllのMisakiに移行したいと考えているので、
+そろそろhowmにも手を出してみようかなと。
+
+howmにもリンク機能やTODO機能があるが、
+これらはorg-modeにもあるのでそのまま継続するとして、
+howmに任せたいのはファイル管理。
+ファイル自体を意識せずにどんどんメモが取れる環境が理想。
+
+* やること
+- 拡張子は.howmと.orgどちらにするか。
+ - →howmの機能は主にファイル管理に使用する予定なのと、改宗したときに.howmだと面倒なので.orgでいく。
+ - →howmディレクトリをつくってその配下のファイルはすべてhome-modeにしたほうがいいのかも。
+ - →.elも.txtも.orgもすべてhowmで管理。だけどタイトルの仕切りは？
+- 日報をhowmでうまいこと管理したい。
+ - →repotディレクトリとか作る？
+- orgのtagによるマッチ機能があれば、howmを使う必要もないかも？
+
+* 影響されたサイト
+- [[http://yamadawindsurf.blogspot.jp/][Evernote vs Emacs+howm+org+Dropbox]]
+ - 完全同意です。evernoteは流行り始めたころは使ってましたが、
+   emacsとの連携がしづらいのでいつのまにか使わなくなってしまいました。
+
+- [[http://techwave.jp/archives/51465161.html][emacsだけで書上げた書籍…翔泳社「ツイッター情報収集術」のつくり方(2) 執筆環境編【増田(maskin)真樹】]]
+ - すごいですね。この方のノウハウをぜひ聞いてみたいです。
+
+- [[http://kinjo.github.com/hago16-emacs/][My life on Emacs]]
+ - org-modeとhowmを同時に使用するというのはこの方の資料を拝見して初めて気づきました。
+   howmをサンプルプログラムと日報に活用ってところが詳しくしりたいです。
+
+- [[http://yono05.wordpress.com/2011/11/23/emacs-org-mode-howm-mobileorg-dropbox-%E3%81%A7%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E7%AE%A1%E7%90%86%E7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%9F/][Emacs + Org-mode + howm + MobileOrg + Dropbox でテキスト管理環境を構築した]]
+ - MobileOrgもぜひ活用したいと思っているのですが、まだできてないですね。。。
+
