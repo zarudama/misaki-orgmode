@@ -1,7 +1,7 @@
 # @layout post
 # @title Customization
 # @date 2070-1-1 
-# @tags tag2
+# @tag tag2
 You can customize a site by editing =misaki-orgmode/sample/_config.clj=.
 
 You revise =:posts-per-page= to change the number of the articles of the list of articles displayed by index.html.

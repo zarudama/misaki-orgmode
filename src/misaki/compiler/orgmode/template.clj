@@ -48,7 +48,7 @@
     (let [lines  (map str/trimr (str/split-lines slurped-data))
           params (remove nil? (map parse-option-line lines))
           option (into {} (for [[[_ k v]] params] [(keyword k) v]))]
-      (assoc option :tags (-> option :tags parse-tag-string)))
+      (assoc option :tags (-> option :tag parse-tag-string)))
     {}))
 
 (defn remove-option-lines

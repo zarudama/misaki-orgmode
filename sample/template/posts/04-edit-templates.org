@@ -1,7 +1,7 @@
 # @layout post
 # @title Edit templates
 # @date 2060-1-1 
-# @tags tag2
+# @tag tag2
 #+OPTIONS: toc:t
 # "@" => "&#64;"
 # "$" => "&#36;"
