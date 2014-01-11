@@ -204,6 +204,7 @@
 (defn -compile
   "Compile function called by misaki.core."
   [config file]
+  (println "   Compiling... "(.getAbsolutePath file))
   (binding [*config* config]
     (cond
      ;; layout template
