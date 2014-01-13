@@ -10,16 +10,16 @@
 
 <h2>Table of contents</h2>
 <ul>
-@(for all-posts)
-<li><a href="$(url)">$(title)</a></li>
-@(end)
+  @(for all-posts)
+  <li><a href="$(url)">$(title)</a></li>
+  @(end)
 </ul>
 
 <h2>Pagination sample</h2>
 <ul>
-@(for posts)
-<li><a href="$(url)">$(date-format date "yyyy MMM dd") - $(title)</a></li>
-@(end)
+  @(for posts)
+  <li><a href="$(url)">$(date-format date "yyyy MMM dd") - $(title)</a></li>
+  @(end)
 </ul>
 @(if prev-page)
 <a href="$(prev-page)">&laquo; Newer posts</a>
@@ -28,8 +28,26 @@
 <a href="$(next-page)">Older posts &raquo;</a>
 @(end)
 
+<h2>Tags sample</h2>
+<ul>
+  @(for all-tags)
+  <li><a href="$(url)">$(name)($(count))</a></li>
+  @(end)
+</ul>
+<h2>Recent Posts sample</h2>
+<ul>
+  @(for recent-posts)
+  <li><a href="$(url)">$(title)</a></li>
+  @(end)
+</ul>
 
 <h2>Links</h2>
 <ul>
   <li><a href="$(root)archives.html">Archives</a></li>
 </ul>
+
+<h2>Search</h2>
+<form action="http://google.com/search" method="get">
+  <input type="hidden" name="q" value="site:$(your-domain)">
+  <input class="search" type="text" name="q" results="0" placeholder="Search">
+</form>

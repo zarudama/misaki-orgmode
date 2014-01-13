@@ -51,8 +51,6 @@ h2 a { color: #000; text-decoration: none; }
 /* =footer */
 .misaki-logo p { text-align: right; }
 .misaki-logo {
-    border-top: 1px solid;
-    border-color: rgba(0,39,59,.08);
     margin: 1em;
     padding: 1em;
 }

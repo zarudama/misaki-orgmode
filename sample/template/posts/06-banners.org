@@ -1,0 +1,17 @@
+# @layout post
+# @title Banners
+# @date 2040-12-1 
+# @tag tag2
+
+
+#+CAPTION: misaki banner
+file:/img/misaki-banner.png
+
+#+CAPTION: misaki-orgmode banner
+file:/img/misaki-orgmode-banner.png
+
+#+CAPTION: large misaki banner
+file:/img/misaki-large-banner.png
+
+#+CAPTION: large misaki-orgmode banner
+file:/img/misaki-orgmode-large-banner.png
