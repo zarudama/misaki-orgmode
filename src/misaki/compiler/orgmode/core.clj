@@ -49,7 +49,7 @@
   [#^File file option]
   {:pre [(file? file)]}
   (let [filename (.getName file)
-        option-filename (:filename option)
+        option-filename (:output option)
         post-date   (string->date (:date option)) 
         config-filename (render (:post-filename-format *config*)
                                 {:year     (year post-date)

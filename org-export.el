@@ -15,7 +15,10 @@
 ;;; add a pathof major-mode of each language after having put path to htmlise through code if You want coloring.
 (add-to-list 'load-path "~/Dropbox/dotfiles/emacs/package/htmlize-20130207.2102/")
 (add-to-list 'load-path "~/Dropbox/dotfiles/emacs/package/clojure-mode-20131222.444/")
+(require 'clojure-mode)
 (require 'htmlize)
+(setq org-html-htmlize-output-type 'inline-css) 
+(global-font-lock-mode t)
 
 (setq org-src-fontify-natively t)
 (setq org-export-headline-levels 2)
