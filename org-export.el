@@ -6,7 +6,9 @@
 
 (add-to-list 'load-path "~/Dropbox/site-lisp/org-8.0/lisp")
 (add-to-list 'load-path "~/Dropbox/site-lisp/org-8.0/contrib/lisp" t)
-(require 'org)
+;;(require 'org)
+;;(require 'org-install)
+(require 'org-html)
 
 ;;;
 ;;; begin custmoize org-mode
@@ -17,10 +19,14 @@
 (add-to-list 'load-path "~/Dropbox/dotfiles/emacs/package/clojure-mode-20131222.444/")
 (require 'clojure-mode)
 (require 'htmlize)
-(setq org-html-htmlize-output-type 'inline-css) 
-(global-font-lock-mode t)
+;;(setq org-html-htmlize-output-type 'inline-css) 
+;;(setq org-html-htmlize-output-type 'css)
 
+(global-font-lock-mode t)
+(turn-on-font-lock)
 (setq org-src-fontify-natively t)
+(font-lock-mode 1)
+
 (setq org-export-headline-levels 2)
 
 (setq org-export-default-language "en")

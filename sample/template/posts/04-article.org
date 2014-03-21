@@ -1,5 +1,5 @@
 # @layout post
-# @title Edit templates
+# @title How to make of the article
 # @output 2060-12/04-EDIT.html
 # @date 2060-1-1 
 # @tag tag2

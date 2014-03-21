@@ -15,3 +15,57 @@ you revise =:site-title, :site-subtitle, twitter-id, disqus-id= to set the whole
   :disqus-id  "YOUR_DISQUS_ID"
 }
 #+END_SRC
+
+** customize
+You can customize a site by editing =misaki-orgmode/sample/_config.clj=.
+
+You revise =:posts-per-page= to change the number of the articles of the list of articles displayed by index.html.
+#+BEGIN_EXAMPLE
+ :posts-per-page 2
+#+END_EXAMPLE
+
+You revise =:recent-posts-num= to change the number of the indication of the recent article.
+#+BEGIN_EXAMPLE
+ :recent-posts-num 2
+#+END_EXAMPLE
+
+The URL of the article begins by default in "/", but revises =:url-base= when You want to change this.
+#+BEGIN_EXAMPLE
+ :url-base "/"
+#+END_EXAMPLE
+
+You revise follows if You want to change the format of an output html file.
+#+BEGIN_EXAMPLE
+ :post-filename-regexp #"^(.+)$"
+ :post-filename-format "＄(year)/＄(month)/＄(day)_＄(filename)"
+#+END_EXAMPLE
+- =:post-filename-regexp= is a naming rule of input postsFile.It is not necessary to change a particularly unreasonable limit of it.
+- =:post-filename-format= is a naming rule of output htmlFile.
+
+When You want to add the file except the blog article, You add html to the following directory.
+#+BEGIN_SRC sh
+misaki-orgmode/sample/template/about.html
+#+END_SRC
+The example mentioned above is an example of about.html.
+
+you describe the link to about.html as follows.
+#+BEGIN_SRC sh
+＄(root)about.html
+#+END_SRC
+
+When the contents of the file which you added have article names, You add it as follows.
+#+BEGIN_EXAMPLE
+ :compile-with-post ["index.html" "archives.html" "atom.xml" "about.html"]
+#+END_EXAMPLE
+** emacs
+You can set customization of org-mode at the time of the compilation by editing org-export.el.
+
+#+BEGIN_SRC clojure
+(import (java.awt.image BufferedImage))
+(import (javax.imageio ImageIO))
+(import (java.io File))
+(def image (ImageIO/read (File. "gai.png")))
+#+END_SRC
+
+
+

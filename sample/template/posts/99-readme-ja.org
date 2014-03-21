@@ -45,9 +45,8 @@ misaki-orgmode/sample/template/posts/*.org
 - http://liquidz.github.io/misaki/toc/01-getting-started.html
 
 * 環境設定
+** サイトの設定
 サイト全体の設定は、 =:site-title, :site-subtitle, twitter-id, disqus-id= を変更します。
-
-
  =misaki-orgmode/sample/_config.clj=
 #+BEGIN_SRC clojure
 :site {
@@ -59,7 +58,7 @@ misaki-orgmode/sample/template/posts/*.org
 }
 #+END_SRC
 
-* カスタマイズ
+** カスタマイズ
  =misaki-orgmode/sample/_config.clj= を編集することでカスタマイズできます。
 
 index.htmlにある記事一覧の表示数を変更するには =:posts-per-page= の数を指定します。
@@ -100,8 +99,9 @@ misaki-orgmode/sample/template/about.html
  :compile-with-post ["index.html" "archives.html" "atom.xml" "about.html"]
 #+END_EXAMPLE
 
-* テンプレートの編集
-
+** emacs
+org-export.elを編集することで、コンパイル時のorg-modeのカスタマイズを設定できます。
+* 記事のつくりかた
 ** org-files
 記事の内容は、Emacsのorg-modeで記述します。
 
@@ -133,7 +133,6 @@ misaki-orgmode/sample/template/about.html
  &#35;+END_HTML
 </pre>
 #+END_HTML
-
 
 ** html-files
 Misaki org-mode のhtmlには、 [[https://github.com/liquidz/cuma][cuma template]] を使用しています。
@@ -214,8 +213,6 @@ clojureの関数を定義することで、cumaからアクセスできます。
 #+BEGIN_HTML
 $(hello "world")
 #+END_HTML
-
-
 
 * 本家Misakiとの相違点
 いくつか仕様変更があります。
