@@ -11,7 +11,7 @@
     @(for all-posts)
     <entry>
         <title>$(title)</title>
-        <link>$(atom-base)$(url)</link>
+        <link href="$(atom-base)$(url)" />
         <updated>$(date->xml-schema date)</updated>
         <id>$(atom-base)$(url)</id>
         <content type="html">$(content)</content>
