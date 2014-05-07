@@ -4,8 +4,8 @@
 ;; (setq my-file-name (car argv))
 ;; (setq argv nil)
 
-(add-to-list 'load-path "~/Dropbox/site-lisp/org-8.0/lisp")
-(add-to-list 'load-path "~/Dropbox/site-lisp/org-8.0/contrib/lisp" t)
+;;(add-to-list 'load-path "~/Dropbox/site-lisp/org-8.0/lisp")
+;;(add-to-list 'load-path "~/Dropbox/site-lisp/org-8.0/contrib/lisp" t)
 ;;(require 'org)
 ;;(require 'org-install)
 (require 'org-html)
@@ -15,10 +15,11 @@
 ;;;
 
 ;;; add a pathof major-mode of each language after having put path to htmlise through code if You want coloring.
-(add-to-list 'load-path "~/Dropbox/dotfiles/emacs/package/htmlize-20130207.2102/")
-(add-to-list 'load-path "~/Dropbox/dotfiles/emacs/package/clojure-mode-20131222.444/")
-(require 'clojure-mode)
-(require 'htmlize)
+;;(add-to-list 'load-path "~/Dropbox/dotfiles/emacs/package/htmlize-20130207.2102/")
+;;(add-to-list 'load-path "~/Dropbox/dotfiles/emacs/package/clojure-mode-20131222.444/")
+;;(require 'clojure-mode)
+;;(require 'java-mode)
+;;(require 'htmlize)
 ;;(setq org-html-htmlize-output-type 'inline-css) 
 ;;(setq org-html-htmlize-output-type 'css)
 
