@@ -18,3 +18,4 @@ watcher.rb
 /sample/public/atom.xml
 /sample/public/index.html
 /sample/public/archives.html
+.cask/
