@@ -135,9 +135,10 @@
   "Get tagged posts data from (:post-dir *config*) directory."
   [tag-name]
   {:pre [(string? tag-name)]}
-  (filter
-   #(post-info-contains-tag? % tag-name)
-   (get-post-data :all? true)))
+  (sort-alphabetically :title
+   (filter
+    #(post-info-contains-tag? % tag-name)
+    (get-post-data :all? true))))
 
 (defn make-arichves
   "Make post list for archive pages."
